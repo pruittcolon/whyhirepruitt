@@ -6,6 +6,12 @@
   <title>Why Hire Pruitt — Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+  <meta name="description" content="Why hire Pruitt? Network Engineer, Automation Specialist, and Efficiency Expert.">
+  <meta property="og:title" content="Why Hire Pruitt?">
+  <meta property="og:description" content="Network Engineering. Lean Systems. Automation. Output.">
+  <meta property="og:image" content="https://whyhirepruitt.dev/assets/hero.png">
+  <meta property="og:url" content="https://whyhirepruitt.dev">
+
     :root {
       --bg: #f4f6f9;
       --fg: #1c1e21;
@@ -78,6 +84,17 @@
       position: relative;
       overflow: hidden;
     }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
 
     .hero::after {
       content: "";
@@ -152,7 +169,8 @@
       }
 
       .hero p {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
       }
 
       .nav-links {
