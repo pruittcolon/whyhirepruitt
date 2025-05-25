@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Why Hire Pruitt | Resume</title>
+  <!-- Google Fonts: Inter and Roboto Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #f6f8fa;
+      --color-card: #fff;
+      --color-text: #1a1a1a;
+      --color-accent: #0057ff;
+      --color-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+      --color-link: #0057ff;
+      --color-muted: #7a7a7a;
+      --border-radius: 1.3rem;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #141721;
+      --color-card: #222736;
+      --color-text: #f5f5f7;
+      --color-accent: #52aaff;
+      --color-shadow: 0 4px 24px 0 rgba(0,0,0,0.2);
+      --color-link: #52aaff;
+      --color-muted: #adb5bd;
+    }
+
+    html, body {
+      padding: 0;
+      margin: 0;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .container {
+      width: 95%;
+      max-width: 730px;
+      margin: 2.5rem auto 0 auto;
+      padding-bottom: 3rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-card {
+      background: var(--color-card);
+      border-radius: var(--border-radius);
+      box-shadow: var(--color-shadow);
+      padding: 2.3rem 1.5rem 1.7rem 1.5rem;
+      display: inline-block;
+      margin-bottom: 2rem;
+      width: 100%;
+      transition: background var(--transition);
+    }
+    .hero-card h1 {
+      margin-top: 0;
+      margin-bottom: 0.3rem;
+      font-size: 2.7rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+    .hero-card p {
+      font-size: 1.18rem;
+      color: var(--color-muted);
+      margin: 0.2rem 0 0 0;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 500;
+    }
+
+    main section {
+      margin-bottom: 2rem;
+      background: var(--color-card);
+      border-radius: var(--border-radius);
+      box-shadow: var(--color-shadow);
+      padding: 1.2rem 1.4rem;
+      transition: background var(--transition);
+    }
+
+    h2 {
+      font-size: 1.23rem;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.2px;
+      color: var(--color-accent);
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+    }
+
+    .projects-list li {
+      background: rgba(0,87,255,0.08);
+      border-radius: 0.8rem;
+      margin-bottom: 0.7rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      color: var(--color-text);
+      font-family: inherit;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 1.07rem;
+      margin-top: 0.7rem;
+    }
+
+    .contact-links a {
+      color: var(--color-link);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--color-accent);
+      padding-bottom: 0.05em;
+      font-family: 'Roboto Mono', monospace;
+      transition: color 0.15s;
+    }
+    .contact-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      z-index: 100;
+      background: var(--color-card);
+      border: none;
+      border-radius: 2em;
+      padding: 0.52em 1.1em;
+      box-shadow: 0 1px 10px 0 rgba(0,0,0,0.08);
+      color: var(--color-text);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 99%;
+        margin-top: 1rem;
+      }
+      .hero-card {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+      }
+      main section {
+        padding: 0.88rem 0.6rem;
+      }
+      .dark-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 0.96rem;
+      }
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 0.99rem;
+      padding-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <button class="dark-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+    🌗 Dark Mode
+  </button>
+  <div class="container">
+    <header>
+      <div class="hero-card">
+        <h1>Pruitt Colon</h1>
+        <p>Network Engineer &bull; Efficiency Specialist &bull; Problem Solver</p>
+      </div>
+    </header>
+    <main>
+      <section id="about">
+        <h2>About Me</h2>
+        <p>
+          Results-driven engineer with extensive experience in telecom, network testing,
+          and process optimization. Adept at building scalable, high-efficiency systems,
+          eliminating bottlenecks, and leading teams to higher output. Always focused on
+          measurable improvement, automation, and a culture of excellence.
+        </p>
+      </section>
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>Network &amp; Wireless Testing (Samsung, BTI Solutions)</li>
+          <li>Process Automation (PowerShell, Python, Bash)</li>
+          <li>Lean Manufacturing, Six Sigma, Team Leadership</li>
+          <li>Telecom Device QA &amp; Reporting</li>
+          <li>Data Visualization &amp; Dashboarding</li>
+        </ul>
+      </section>
+      <section id="projects">
+        <h2>Projects</h2>
+        <ul class="projects-list">
+          <li>
+            <strong>Automated Reporting Suite</strong> – PowerShell tools for Samsung that cut manual test time in half and improved accuracy.
+          </li>
+          <li>
+            <strong>Telecom Workflow Optimization</strong> – Built dashboards that flagged network bottlenecks before launch.
+          </li>
+          <li>
+            <strong>Device Test Automation</strong> – Reduced human errors by scripting repeatable QA checks and summaries.
+          </li>
+        </ul>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-links">
+          <span>Email: <a href="mailto:pruittcolon@gmail.com">pruittcolon@gmail.com</a></span>
+          <span>GitHub: <a href="https://github.com/pruittcolon" target="_blank">pruittcolon</a></span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      &copy; 2025 Pruitt Colon &mdash; whyhirepruitt.dev
+    </footer>
+  </div>
+  <script>
+    // Dark mode toggle with localStorage
+    const toggle = document.getElementById('darkModeToggle');
+    const root = document.documentElement;
+    const userTheme = localStorage.getItem('theme');
+    if(userTheme === "dark") root.setAttribute("data-theme", "dark");
+    toggle.onclick = function() {
+      if(root.getAttribute("data-theme") === "dark") {
+        root.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+        toggle.textContent = "🌗 Dark Mode";
+      } else {
+        root.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        toggle.textContent = "☀️ Light Mode";
+      }
+    }
+    // Set toggle text on page load
+    if(root.getAttribute("data-theme") === "dark") {
+      toggle.textContent = "☀️ Light Mode";
+    }
+  </script>
+</body>
+</html>
