@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects • Why Hire Pruitt</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -15,102 +16,104 @@
       --shadow: 0 8px 32px rgba(0,0,0,0.1);
       --transition: all 0.3s ease;
     }
-    * { margin:0; padding:0; box-sizing:border-box }
+    * { margin: 0; padding: 0; box-sizing: border-box }
     body {
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--fg);
-      line-height:1.6;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
     }
     a {
-      color:var(--accent);
-      text-decoration:none;
-      transition:var(--transition);
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
     }
-    a:hover { text-decoration:underline }
+    a:hover { text-decoration: underline }
     nav {
-      background:var(--card);
-      box-shadow:var(--shadow);
-      padding:1rem 2rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      z-index:100;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .nav-links {
-      list-style:none;
-      display:flex;
-      gap:1.5rem;
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
     }
-    .nav-links a { font-weight:600 }
+    .nav-links a { font-weight: 600 }
     .container {
-      width:90%;
-      max-width:1000px;
-      margin:0 auto;
-      padding:2rem 0;
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 0;
     }
     header.page-header {
-      text-align:center;
-      margin-bottom:2rem;
+      text-align: center;
+      margin-bottom: 2rem;
     }
     header.page-header h1 {
-      font-size:2.8rem;
-      margin-bottom:0.5rem;
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
     }
     header.page-header p {
-      font-size:1.1rem;
-      font-weight:500;
-      color:var(--accent);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
     }
     section.projects {
-      display:grid;
-      gap:2rem;
-      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .project-card {
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      transition:transform var(--transition);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
     }
     .project-card:hover {
-      transform:translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
     }
     .project-image {
-      width:100%;
-      height:160px;
-      object-fit:cover;
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
     }
     .project-content {
-      padding:1.2rem;
+      padding: 1.5rem;
     }
     .project-content h3 {
-      margin-bottom:0.6rem;
-      color:var(--accent);
-      font-size:1.3rem;
+      margin-bottom: 0.6rem;
+      color: var(--accent);
+      font-size: 1.3rem;
     }
     .project-content p {
-      font-size:1rem;
-      margin-bottom:1rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
     }
     .project-content a {
-      font-weight:600;
-      border-bottom:2px solid var(--accent);
-      padding-bottom:0.1em;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.1em;
     }
     footer {
-      text-align:center;
-      margin-top:3rem;
-      padding:1.5rem 0;
-      color:#666;
-      font-size:0.9rem;
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1.5rem 0;
+      color: #666;
+      font-size: 0.9rem;
     }
-    @media (max-width:600px) {
-      .nav-links { flex-direction:column; gap:0.5rem }
-      nav { flex-direction:column; align-items:flex-start }
+    @media (max-width: 600px) {
+      .nav-links { flex-direction: column; gap: 0.5rem }
+      nav { flex-direction: column; align-items: flex-start }
     }
   </style>
 </head>
@@ -129,12 +132,12 @@
   <div class="container">
     <header class="page-header">
       <h1>Projects</h1>
-      <p>Selected Work & Contributions</p>
+      <p>Selected Work &amp; Contributions</p>
     </header>
 
     <section class="projects">
       <div class="project-card">
-        <img src="https://via.placeholder.com/400x160.png?text=Reporting+Suite" alt="Automated Reporting Suite" class="project-image"/>
+        <img src="assets/reporting-suite.png" alt="Automated Reporting Suite" class="project-image"/>
         <div class="project-content">
           <h3>Automated Reporting Suite</h3>
           <p>Developed a PowerShell-based reporting system that halved manual testing time and delivered real-time analytics to Samsung engineers.</p>
@@ -142,7 +145,7 @@
         </div>
       </div>
       <div class="project-card">
-        <img src="https://via.placeholder.com/400x160.png?text=Telecom+Dashboard" alt="Telecom Workflow Dashboard" class="project-image"/>
+        <img src="assets/workflow-dashboard.png" alt="Telecom Workflow Dashboard" class="project-image"/>
         <div class="project-content">
           <h3>Telecom Workflow Dashboard</h3>
           <p>Built interactive dashboards in PowerBI to visualize network bottlenecks, improving pre-launch issue detection by 40%.</p>
@@ -150,7 +153,7 @@
         </div>
       </div>
       <div class="project-card">
-        <img src="https://via.placeholder.com/400x160.png?text=Test+Automation" alt="Device Test Automation" class="project-image"/>
+        <img src="assets/device-test-automation.png" alt="Device Test Automation" class="project-image"/>
         <div class="project-content">
           <h3>Device Test Automation</h3>
           <p>Implemented end-to-end device QA scripts that reduced human error and increased throughput by scripting ADB interactions and Excel exports.</p>
