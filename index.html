@@ -3,259 +3,209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Why Hire Pruitt | Resume</title>
-  <!-- Google Fonts: Inter and Roboto Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+  <title>Why Hire Pruitt — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #f6f8fa;
-      --color-card: #fff;
-      --color-text: #1a1a1a;
-      --color-accent: #0057ff;
-      --color-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
-      --color-link: #0057ff;
-      --color-muted: #7a7a7a;
-      --border-radius: 1.3rem;
-      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+      --bg: #f4f6f9;
+      --fg: #1c1e21;
+      --accent: #0066ff;
+      --white: #fff;
+      --card: #ffffff;
+      --radius: 1.2rem;
+      --shadow: 0 8px 32px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
     }
 
-    [data-theme="dark"] {
-      --color-bg: #141721;
-      --color-card: #222736;
-      --color-text: #f5f5f7;
-      --color-accent: #52aaff;
-      --color-shadow: 0 4px 24px 0 rgba(0,0,0,0.2);
-      --color-link: #52aaff;
-      --color-muted: #adb5bd;
-    }
-
-    html, body {
-      padding: 0;
+    * {
       margin: 0;
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      background: var(--color-bg);
-      color: var(--color-text);
-      min-height: 100vh;
-      transition: background var(--transition), color var(--transition);
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    nav {
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
     }
 
     .container {
-      width: 95%;
-      max-width: 730px;
-      margin: 2.5rem auto 0 auto;
-      padding-bottom: 3rem;
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    header {
+    .hero {
+      background: url("https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      padding: 6rem 2rem;
+      color: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
       text-align: center;
-      margin-bottom: 2rem;
     }
 
-    .hero-card {
-      background: var(--color-card);
-      border-radius: var(--border-radius);
-      box-shadow: var(--color-shadow);
-      padding: 2.3rem 1.5rem 1.7rem 1.5rem;
-      display: inline-block;
-      margin-bottom: 2rem;
-      width: 100%;
-      transition: background var(--transition);
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
     }
-    .hero-card h1 {
-      margin-top: 0;
-      margin-bottom: 0.3rem;
-      font-size: 2.7rem;
-      font-weight: 800;
-      letter-spacing: -2px;
-    }
-    .hero-card p {
-      font-size: 1.18rem;
-      color: var(--color-muted);
-      margin: 0.2rem 0 0 0;
-      font-family: 'Roboto Mono', monospace;
+
+    .hero p {
+      font-size: 1.3rem;
       font-weight: 500;
     }
 
-    main section {
-      margin-bottom: 2rem;
-      background: var(--color-card);
-      border-radius: var(--border-radius);
-      box-shadow: var(--color-shadow);
-      padding: 1.2rem 1.4rem;
-      transition: background var(--transition);
-    }
-
-    h2 {
-      font-size: 1.23rem;
+    .cta {
+      margin-top: 2rem;
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-size: 1.05rem;
       font-weight: 600;
-      margin-top: 0;
-      margin-bottom: 0.7rem;
-      letter-spacing: 0.2px;
-      color: var(--color-accent);
+      transition: var(--transition);
+      box-shadow: var(--shadow);
     }
 
-    ul {
-      padding-left: 1.2rem;
-      margin: 0;
-      font-size: 1rem;
+    .cta:hover {
+      background: #004ccc;
     }
 
-    li {
-      margin-bottom: 0.5rem;
-      line-height: 1.7;
+    section {
+      margin-top: 3rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
     }
 
-    .projects-list li {
-      background: rgba(0,87,255,0.08);
-      border-radius: 0.8rem;
-      margin-bottom: 0.7rem;
-      padding: 0.6rem 1rem;
-      font-size: 1rem;
-      color: var(--color-text);
-      font-family: inherit;
+    section h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
     }
 
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      font-size: 1.07rem;
-      margin-top: 0.7rem;
+    section p {
+      font-size: 1.05rem;
     }
 
-    .contact-links a {
-      color: var(--color-link);
-      text-decoration: none;
-      border-bottom: 1.5px solid var(--color-accent);
-      padding-bottom: 0.05em;
-      font-family: 'Roboto Mono', monospace;
-      transition: color 0.15s;
-    }
-    .contact-links a:hover {
-      color: var(--color-accent);
-    }
-
-    .dark-toggle {
-      position: fixed;
-      top: 18px;
-      right: 22px;
-      z-index: 100;
-      background: var(--color-card);
-      border: none;
-      border-radius: 2em;
-      padding: 0.52em 1.1em;
-      box-shadow: 0 1px 10px 0 rgba(0,0,0,0.08);
-      color: var(--color-text);
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background var(--transition), color var(--transition);
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem 0;
+      color: #666;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 600px) {
-      .container {
-        width: 99%;
-        margin-top: 1rem;
+      .hero h1 {
+        font-size: 2.2rem;
       }
-      .hero-card {
-        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+
+      .hero p {
+        font-size: 1rem;
       }
-      main section {
-        padding: 0.88rem 0.6rem;
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
       }
-      .dark-toggle {
-        top: 10px;
-        right: 10px;
-        font-size: 0.96rem;
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
       }
-    }
-    footer {
-      margin-top: 3rem;
-      text-align: center;
-      color: var(--color-muted);
-      font-size: 0.99rem;
-      padding-bottom: 2rem;
     }
   </style>
 </head>
 <body>
-  <button class="dark-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-    🌗 Dark Mode
-  </button>
+
+  <!-- Navigation -->
+  <nav>
+    <div><strong>Pruitt Colon</strong></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Why Hire Pruitt?</h1>
+      <p>Network Engineering. Lean Systems. Automation. Output.</p>
+      <a href="about.html" class="cta">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Welcome Section -->
   <div class="container">
-    <header>
-      <div class="hero-card">
-        <h1>Pruitt Colon</h1>
-        <p>Network Engineer &bull; Efficiency Specialist &bull; Problem Solver</p>
-      </div>
-    </header>
-    <main>
-      <section id="about">
-        <h2>About Me</h2>
-        <p>
-          Results-driven engineer with extensive experience in telecom, network testing,
-          and process optimization. Adept at building scalable, high-efficiency systems,
-          eliminating bottlenecks, and leading teams to higher output. Always focused on
-          measurable improvement, automation, and a culture of excellence.
-        </p>
-      </section>
-      <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>Network &amp; Wireless Testing (Samsung, BTI Solutions)</li>
-          <li>Process Automation (PowerShell, Python, Bash)</li>
-          <li>Lean Manufacturing, Six Sigma, Team Leadership</li>
-          <li>Telecom Device QA &amp; Reporting</li>
-          <li>Data Visualization &amp; Dashboarding</li>
-        </ul>
-      </section>
-      <section id="projects">
-        <h2>Projects</h2>
-        <ul class="projects-list">
-          <li>
-            <strong>Automated Reporting Suite</strong> – PowerShell tools for Samsung that cut manual test time in half and improved accuracy.
-          </li>
-          <li>
-            <strong>Telecom Workflow Optimization</strong> – Built dashboards that flagged network bottlenecks before launch.
-          </li>
-          <li>
-            <strong>Device Test Automation</strong> – Reduced human errors by scripting repeatable QA checks and summaries.
-          </li>
-        </ul>
-      </section>
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-links">
-          <span>Email: <a href="mailto:pruittcolon@gmail.com">pruittcolon@gmail.com</a></span>
-          <span>GitHub: <a href="https://github.com/pruittcolon" target="_blank">pruittcolon</a></span>
-        </div>
-      </section>
-    </main>
-    <footer>
-      &copy; 2025 Pruitt Colon &mdash; whyhirepruitt.dev
-    </footer>
+    <section>
+      <h2>Welcome</h2>
+      <p>
+        I build systems that run faster, smoother, and smarter. With a background in telecom, wireless engineering,
+        and process automation, I specialize in identifying inefficiencies and replacing them with structured,
+        scalable workflows.
+      </p>
+    </section>
   </div>
-  <script>
-    // Dark mode toggle with localStorage
-    const toggle = document.getElementById('darkModeToggle');
-    const root = document.documentElement;
-    const userTheme = localStorage.getItem('theme');
-    if(userTheme === "dark") root.setAttribute("data-theme", "dark");
-    toggle.onclick = function() {
-      if(root.getAttribute("data-theme") === "dark") {
-        root.removeAttribute("data-theme");
-        localStorage.setItem("theme", "light");
-        toggle.textContent = "🌗 Dark Mode";
-      } else {
-        root.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-        toggle.textContent = "☀️ Light Mode";
-      }
-    }
-    // Set toggle text on page load
-    if(root.getAttribute("data-theme") === "dark") {
-      toggle.textContent = "☀️ Light Mode";
-    }
-  </script>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Pruitt Colon — whyhirepruitt.dev
+  </footer>
+
 </body>
 </html>
