@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills • Why Hire Pruitt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --fg: #1c1e21;
+      --accent: #0066ff;
+      --card: #ffffff;
+      --radius: 1.2rem;
+      --shadow: 0 8px 32px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    * { margin:0; padding:0; box-sizing:border-box }
+    body {
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+    }
+    a {
+      color:var(--accent);
+      text-decoration:none;
+      transition:var(--transition);
+    }
+    a:hover { text-decoration:underline }
+    nav {
+      background:var(--card);
+      box-shadow:var(--shadow);
+      padding:1rem 2rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .nav-links {
+      list-style:none;
+      display:flex;
+      gap:1.5rem;
+    }
+    .nav-links a { font-weight:600 }
+    .container {
+      width:90%;
+      max-width:1000px;
+      margin:0 auto;
+      padding:2rem 0;
+    }
+    header.page-header {
+      text-align:center;
+      margin-bottom:2rem;
+    }
+    header.page-header h1 {
+      font-size:2.8rem;
+      margin-bottom:0.5rem;
+    }
+    header.page-header p {
+      font-size:1.1rem;
+      font-weight:500;
+      color:var(--accent);
+    }
+    section.skills {
+      display:grid;
+      gap:2rem;
+      grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    }
+    .skill-card {
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:1.5rem;
+      transition:transform var(--transition);
+    }
+    .skill-card:hover { transform:translateY(-5px) }
+    .skill-card h3 {
+      margin-bottom:0.8rem;
+      color:var(--accent);
+      font-size:1.3rem;
+    }
+    .skill-card ul {
+      list-style:disc;
+      margin-left:1.2rem;
+    }
+    .skill-card li {
+      margin-bottom:0.5rem;
+      font-size:1rem;
+    }
+    footer {
+      text-align:center;
+      margin-top:3rem;
+      padding:1.5rem 0;
+      color:#666;
+      font-size:0.9rem;
+    }
+    @media (max-width:600px) {
+      .nav-links { flex-direction:column; gap:0.5rem }
+      nav { flex-direction:column; align-items:flex-start }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>Pruitt Colon</strong></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <header class="page-header">
+      <h1>Skills</h1>
+      <p>Expertise & Technologies</p>
+    </header>
+
+    <section class="skills">
+      <div class="skill-card">
+        <h3>Network Engineering</h3>
+        <ul>
+          <li>TCP/IP, DNS, SNMP, BGP, OSPF</li>
+          <li>Wireless Testing & Spectrum Analysis</li>
+          <li>Router & Switch Configuration (Cisco, Juniper)</li>
+          <li>Protocol Debugging with Wireshark</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Automation & Scripting</h3>
+        <ul>
+          <li>PowerShell & Cmdlets</li>
+          <li>Python & Bash</li>
+          <li>Azure CLI & AWS CLI</li>
+          <li>CI/CD Pipelines with GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Lean & Process Improvement</h3>
+        <ul>
+          <li>Lean Six Sigma Green Belt</li>
+          <li>5S, Kaizen & Root Cause Analysis</li>
+          <li>Workflow Mapping & Optimization</li>
+          <li>Continuous Improvement Strategies</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Tools & Technologies</h3>
+        <ul>
+          <li>Git, GitHub & Version Control</li>
+          <li>VMware & Virtualization</li>
+          <li>Excel & PowerBI Dashboards</li>
+          <li>JIRA & Confluence</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Pruitt Colon — whyhirepruitt.dev
+  </footer>
+</body>
+</html>
