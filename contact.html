@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact • Why Hire Pruitt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --fg: #1c1e21;
+      --accent: #0066ff;
+      --card: #ffffff;
+      --radius: 1.2rem;
+      --shadow: 0 8px 32px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    * { margin:0; padding:0; box-sizing:border-box }
+    body {
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+    }
+    nav {
+      background:var(--card);
+      box-shadow:var(--shadow);
+      padding:1rem 2rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .nav-links {
+      list-style:none;
+      display:flex;
+      gap:1.5rem;
+    }
+    .nav-links a {
+      color:var(--accent);
+      font-weight:600;
+      text-decoration:none;
+      transition:var(--transition);
+    }
+    .nav-links a:hover {
+      text-decoration:underline;
+    }
+    .container {
+      width:90%;
+      max-width:1000px;
+      margin:0 auto;
+      padding:2rem 0;
+    }
+    header.page-header {
+      text-align:center;
+      margin-bottom:2rem;
+    }
+    header.page-header h1 {
+      font-size:2.8rem;
+      margin-bottom:0.5rem;
+    }
+    header.page-header p {
+      font-size:1.1rem;
+      font-weight:500;
+      color:var(--accent);
+    }
+    form.contact-form {
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:2rem;
+      display:grid;
+      gap:1.5rem;
+    }
+    .field-group {
+      display:flex;
+      flex-direction:column;
+    }
+    .field-group label {
+      margin-bottom:0.5rem;
+      font-weight:600;
+    }
+    .field-group input,
+    .field-group textarea {
+      padding:0.8rem;
+      border:1px solid #ccc;
+      border-radius:0.6rem;
+      font-size:1rem;
+      transition:border var(--transition);
+    }
+    .field-group input:focus,
+    .field-group textarea:focus {
+      outline:none;
+      border-color:var(--accent);
+    }
+    button.send-btn {
+      background:var(--accent);
+      color:white;
+      padding:0.9rem 1.5rem;
+      border:none;
+      border-radius:var(--radius);
+      font-size:1.05rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:var(--transition);
+      justify-self:start;
+    }
+    button.send-btn:hover {
+      background:#004ccc;
+    }
+    footer {
+      text-align:center;
+      margin-top:3rem;
+      padding:1.5rem 0;
+      color:#666;
+      font-size:0.9rem;
+    }
+    @media (max-width:600px) {
+      .nav-links {
+        flex-direction:column;
+        gap:0.5rem;
+      }
+      nav {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>Pruitt Colon</strong></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <header class="page-header">
+      <h1>Contact Me</h1>
+      <p>Let’s build something great together</p>
+    </header>
+
+    <form class="contact-form" id="contactForm">
+      <div class="field-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" required placeholder="Your Name"/>
+      </div>
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="you@example.com"/>
+      </div>
+      <div class="field-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" required placeholder="What can I help you with?"></textarea>
+      </div>
+      <button type="submit" class="send-btn">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Pruitt Colon — whyhirepruitt.dev
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you ' + document.getElementById('name').value + 
+            '! Your message has been sent.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
