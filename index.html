@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Why Hire Pruitt — Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
   <meta name="description" content="Why hire Pruitt? Network Engineer, Automation Specialist, and Efficiency Expert.">
   <meta property="og:title" content="Why Hire Pruitt?">
   <meta property="og:description" content="Network Engineering. Lean Systems. Automation. Output.">
   <meta property="og:image" content="https://whyhirepruitt.dev/assets/hero.png">
   <meta property="og:url" content="https://whyhirepruitt.dev">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
     :root {
       --bg: #f4f6f9;
       --fg: #1c1e21;
@@ -22,30 +21,26 @@
       --shadow: 0 8px 32px rgba(0,0,0,0.1);
       --transition: all 0.3s ease;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--fg);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
-
     a {
       color: var(--accent);
       text-decoration: none;
       transition: var(--transition);
     }
-
     a:hover {
       text-decoration: underline;
     }
-
     nav {
       background: var(--card);
       box-shadow: var(--shadow);
@@ -57,104 +52,104 @@
       top: 0;
       z-index: 100;
     }
-
     .nav-links {
       display: flex;
       gap: 1.5rem;
       list-style: none;
     }
-
     .nav-links a {
       font-weight: 600;
+      position: relative;
     }
-
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
     .container {
       width: 90%;
       max-width: 1000px;
       margin: 0 auto;
     }
-
+    /* Hero */
     .hero {
       background: url("assets/hero.png") center/cover no-repeat;
+      background-attachment: fixed;
       padding: 6rem 2rem;
       color: white;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      margin-top: 2rem;
+      margin: 2rem 0;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 0;
-}
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(2px);
+      z-index: -1;
     }
-
     .hero-content {
-      position: relative;
-      z-index: 1;
       text-align: center;
+      animation: fadeSlide 1s ease forwards;
+      opacity: 0;
     }
-
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 0.5rem;
     }
-
     .hero p {
       font-size: 1.3rem;
       font-weight: 500;
     }
-
     .cta {
       margin-top: 2rem;
       display: inline-block;
       background: var(--accent);
       color: white;
-      padding: 0.9rem 2rem;
+      padding: 1.1rem 3rem;
       border-radius: var(--radius);
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 600;
       transition: var(--transition);
       box-shadow: var(--shadow);
     }
-
     .cta:hover {
       background: #004ccc;
+      transform: translateY(-2px);
     }
-
+    /* Sections */
     section {
       margin-top: 3rem;
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 2rem;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlide 0.8s ease forwards;
     }
-
+    section:nth-of-type(2) { animation-delay: 0.2s; }
+    section:nth-of-type(3) { animation-delay: 0.4s; }
     section h2 {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
       color: var(--accent);
     }
-
     section p {
       font-size: 1.05rem;
     }
-
     footer {
       text-align: center;
       margin-top: 4rem;
@@ -162,22 +157,30 @@
       color: #666;
       font-size: 0.9rem;
     }
-
+    /* Animations */
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Mobile */
     @media (max-width: 600px) {
+      .hero {
+        padding: 4rem 1rem;
+      }
       .hero h1 {
         font-size: 2.2rem;
       }
-
       .hero p {
         font-size: 1.2rem;
-        font-weight: 500;
       }
-
+      .cta {
+        width: 80%;
+        font-size: 1.1rem;
+      }
       .nav-links {
         flex-direction: column;
         gap: 0.5rem;
       }
-
       nav {
         flex-direction: column;
         align-items: flex-start;
@@ -186,7 +189,6 @@
   </style>
 </head>
 <body>
-
   <!-- Navigation -->
   <nav>
     <div><strong>Pruitt Colon</strong></div>
@@ -198,7 +200,6 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
@@ -207,9 +208,8 @@
       <a href="about.html" class="cta">Learn More</a>
     </div>
   </section>
-
-  <!-- Welcome Section -->
   <div class="container">
+    <!-- Welcome Section -->
     <section>
       <h2>Welcome</h2>
       <p>
@@ -218,12 +218,20 @@
         scalable workflows.
       </p>
     </section>
+    <!-- Why This Site Section -->
+    <section>
+      <h2>Why I Built This Site</h2>
+      <p>
+        Breaking into tech requires more than a strong résumé, it demands a clear demonstration of skill and drive.
+        I wrote every line here to prove both. This site is a live showcase of my efficiency mindset and my ability
+        to deliver polished results quickly. If your team values speed, structure, and continual improvement, we
+        should talk.
+      </p>
+    </section>
   </div>
-
   <!-- Footer -->
   <footer>
-    &copy; 2025 Pruitt Colon — whyhirepruitt.dev
+    © 2025 Pruitt Colon | whyhirepruitt.dev
   </footer>
-
 </body>
 </html>
