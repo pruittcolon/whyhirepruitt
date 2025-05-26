@@ -1,175 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About • Why Hire Pruitt</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
   <style>
     :root {
-      --bg: #f4f6f9;
-      --fg: #1c1e21;
-      --accent: #0066ff;
-      --white: #ffffff;
-      --card: #ffffff;
-      --radius: 1.2rem;
-      --shadow: 0 8px 32px rgba(0,0,0,0.08);
+      --bg-1: #0d0d0e;
+      --bg-2: #11131a;
+      --accent: #00aaff;
+      --text: #f1f5ff;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.2);
+      --radius: 1rem;
+      --shadow: 0 0 20px rgba(0, 170, 255, 0.3);
       --transition: all 0.3s ease;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      color: var(--text);
+      overflow-x: hidden;
     }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    a:hover { text-decoration: underline }
-
+    #tsparticles { position: fixed; inset: 0; z-index: -1; }
     nav {
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 1rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+      z-index: 1000;
     }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
+    nav.scrolled { padding: 0.6rem 3rem; background: rgba(0, 0, 0, 0.55); }
+    .brand { font-family: "Orbitron", sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 0.03em; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; position: relative; }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
     }
-
-    .nav-links a { font-weight: 600 }
-
-    .container {
+    .nav-links a:hover::after { width: 100%; }
+    .wrapper {
       width: 90%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 3rem 0;
-      animation: fadeIn 0.4s ease-in-out;
+      max-width: 1100px;
+      margin: 7rem auto 0 auto;
+      animation: fadeIn 0.5s ease-in-out both;
     }
-
     header.page-header {
       text-align: center;
       margin-bottom: 2rem;
     }
-
     header.page-header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.3rem;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
     }
-
     header.page-header p {
       font-size: 1.1rem;
       font-weight: 500;
-      color: var(--accent);
+      opacity: 0.8;
     }
-
     .photo {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
+      width: 260px;
+      height: 260px;
+      border-radius: 1rem;
       object-fit: cover;
-      box-shadow: var(--shadow);
-      border: 5px solid var(--white);
+      box-shadow: 0 0 40px rgba(0, 170, 255, 0.3);
+      border: 2px solid var(--accent);
       margin: 2rem auto 2rem auto;
       display: block;
+      transition: var(--transition);
     }
-
+    .photo:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 60px rgba(0, 170, 255, 0.5);
+    }
     section.bio {
-      background: var(--card);
+      background: var(--card-bg);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 2rem 2.5rem;
       margin-bottom: 2.5rem;
       text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
     }
-
     section.bio h2 {
       font-size: 1.8rem;
       color: var(--accent);
       margin-bottom: 1rem;
+      font-family: "Orbitron", sans-serif;
     }
-
     section.bio p {
       font-size: 1.05rem;
       margin-bottom: 1rem;
+      line-height: 1.7;
     }
-
     section.values {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.8rem;
       margin-bottom: 3rem;
     }
-
     .card {
-      background: var(--card);
+      background: var(--card-bg);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 1.5rem;
       transition: var(--transition);
       text-align: center;
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(8px);
     }
-
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 12px 24px rgba(0, 170, 255, 0.2);
     }
-
     .card h3 {
       margin-bottom: 0.5rem;
       font-size: 1.2rem;
       color: var(--accent);
+      font-family: "Orbitron", sans-serif;
     }
-
     .card p {
       font-size: 1rem;
     }
-
     footer {
       text-align: center;
       margin-top: 3rem;
       padding: 1.5rem 0;
-      color: #666;
+      color: #aaa;
       font-size: 0.9rem;
     }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--text); cursor: pointer; }
+    @media (max-width: 720px) {
+      .menu-toggle { display: block; }
       .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
         flex-direction: column;
-        gap: 0.7rem;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 1.5rem 3rem;
+        gap: 1.2rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
       }
-
-      header.page-header h1 {
-        font-size: 2.4rem;
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
       }
-
       .photo {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
+        border-radius: 0.75rem;
       }
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -177,9 +185,11 @@
   </style>
 </head>
 <body>
-  <nav>
-    <div><strong>Pruitt Colon</strong></div>
-    <ul class="nav-links">
+  <div id="tsparticles"></div>
+  <nav id="navbar">
+    <div class="brand">Pruitt Colon</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="skills.html">Skills</a></li>
@@ -187,21 +197,17 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-
-  <div class="container">
+  <div class="wrapper">
     <header class="page-header">
       <h1>About Me</h1>
       <p>Driven Engineer • System Optimizer • Team Leader</p>
     </header>
-
-    <img src="assets/profile.jpeg" alt="Pruitt Colon" class="photo"/>
-
+    <img src="assets/hero.png" alt="Pruitt Colon" class="photo" />
     <section class="bio">
       <h2>My Journey</h2>
       <p>I began in fiber optics and telecom testing, refining quality processes and mastering network diagnostics. Over time I embraced automation, building tools that doubled test throughput and cut errors in half.</p>
       <p>Today I lead network engineering initiatives for global clients, focusing on lean systems, rapid problem resolution, and measurable performance gains. My work has directly influenced faster product launches and improved reliability at scale.</p>
     </section>
-
     <section class="values">
       <div class="card">
         <h3>Efficiency</h3>
@@ -221,9 +227,27 @@
       </div>
     </section>
   </div>
-
-  <footer>
-    &copy; 2025 Pruitt Colon — whyhirepruitt.dev
-  </footer>
+  <footer>© 2025 Pruitt Colon | whyhirepruitt.dev</footer>
+  <script>
+    const nav = document.getElementById("navbar");
+    window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 60));
+    const toggle = document.getElementById("menu-toggle");
+    const links = document.getElementById("nav-links");
+    toggle.addEventListener("click", () => links.classList.toggle("open"));
+    tsParticles.load("tsparticles", {
+      background: { color: { value: "transparent" } },
+      fpsLimit: 60,
+      particles: {
+        number: { value: 70, density: { enable: true, area: 800 } },
+        color: { value: "#00aaff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: { min: 1, max: 4 } },
+        links: { enable: true, distance: 130, color: "#00aaff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1.2, outModes: { default: "bounce" } }
+      },
+      detectRetina: true
+    });
+  </script>
 </body>
 </html>
