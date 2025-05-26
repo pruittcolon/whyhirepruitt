@@ -4,123 +4,78 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects • Why Hire Pruitt</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
   <style>
-    :root {
-      --bg: #f4f6f9;
-      --fg: #1c1e21;
-      --accent: #0066ff;
-      --card: #ffffff;
-      --radius: 1.2rem;
-      --shadow: 0 8px 32px rgba(0,0,0,0.1);
-      --transition: all 0.3s ease;
+    :root{
+      --bg-1:#0c0e11;
+      --bg-2:#0f1219;
+      --accent:#00aaff;
+      --text:#f0f6ff;
+      --card-bg:rgba(255,255,255,0.07);
+      --card-border:rgba(255,255,255,0.18);
+      --radius:1rem;
+      --shadow:0 0 20px rgba(0,170,255,0.28);
+      --transition:all .3s ease;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:"Inter",sans-serif;
+      background:linear-gradient(130deg,var(--bg-1) 0%,var(--bg-2) 100%);
+      background-size:200% 200%;
+      animation:gradientBG 12s ease infinite;
+      color:var(--text);
+      overflow-x:hidden;
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: var(--transition);
+    @keyframes gradientBG{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
     }
-    a:hover { text-decoration: underline }
-    nav {
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    .nav-links a { font-weight: 600 }
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem 0;
-    }
-    header.page-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    header.page-header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
-    header.page-header p {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--accent);
-    }
-    section.projects {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    .project-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
-    }
-    .project-image {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      display: block;
-    }
-    .project-content {
-      padding: 1.5rem;
-    }
-    .project-content h3 {
-      margin-bottom: 0.6rem;
-      color: var(--accent);
-      font-size: 1.3rem;
-    }
-    .project-content p {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    .project-content a {
-      font-weight: 600;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.1em;
-    }
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding: 1.5rem 0;
-      color: #666;
-      font-size: 0.9rem;
-    }
-    @media (max-width: 600px) {
-      .nav-links { flex-direction: column; gap: 0.5rem }
-      nav { flex-direction: column; align-items: flex-start }
-    }
+    #tsparticles{position:fixed;inset:0;z-index:-1}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;width:100%;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background:rgba(0,0,0,.25);border-bottom:1px solid rgba(255,255,255,.06);transition:var(--transition);z-index:1000}
+    nav.scrolled{padding:.6rem 3rem;background:rgba(0,0,0,.55)}
+    .brand{font-family:"Orbitron",sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.03em}
+    .nav-links{list-style:none;display:flex;gap:2rem}
+    .nav-links a{color:var(--text);font-weight:600;text-decoration:none;position:relative}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:var(--transition)}
+    .nav-links a:hover::after{width:100%}
+    .menu-toggle{display:none;background:none;border:none;font-size:1.8rem;color:var(--text);cursor:pointer}
+    @media(max-width:720px){.menu-toggle{display:block}.nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(0,0,0,.92);padding:1.4rem 3rem;gap:1.2rem;transform:translateY(-120%);opacity:0;pointer-events:none;transition:var(--transition)}.nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}}
+
+    /* WRAPPER */
+    .wrapper{width:90%;max-width:1100px;margin:7rem auto 0 auto;animation:fadeIn .5s both}
+    header.page-header{text-align:center;margin-bottom:2rem}
+    header.page-header h1{font-family:"Orbitron",sans-serif;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--accent);margin-bottom:.5rem;text-shadow:0 0 10px rgba(0,170,255,.5)}
+    header.page-header p{font-size:1.1rem;font-weight:500;opacity:.85}
+
+    /* PROJECTS GRID */
+    .projects{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:3rem}
+    .project-card{background:var(--card-bg);backdrop-filter:blur(8px);border:1px solid var(--card-border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.8rem;transition:var(--transition);opacity:0;transform:translateY(40px)}
+    .project-card.visible{opacity:1;transform:translateY(0)}
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(0,170,255,.24)}
+    .project-card h3{color:var(--accent);font-size:1.3rem;margin-bottom:.6rem;font-family:"Orbitron",sans-serif}
+    .project-card p{font-size:1rem;line-height:1.45}
+
+    footer{text-align:center;margin-top:3rem;padding:1.5rem 0;color:#aaa;font-size:.9rem}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
-  <nav>
-    <div><strong>Pruitt Colon</strong></div>
-    <ul class="nav-links">
+  <div id="tsparticles"></div>
+
+  <nav id="navbar">
+    <div class="brand">Pruitt Colon</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="skills.html">Skills</a></li>
@@ -129,42 +84,66 @@
     </ul>
   </nav>
 
-  <div class="container">
+  <div class="wrapper">
     <header class="page-header">
       <h1>Projects</h1>
-      <p>Selected Work &amp; Contributions</p>
+      <p>Selected Work & Passion Builds</p>
     </header>
 
-    <section class="projects">
+    <section class="projects" id="projects-grid">
       <div class="project-card">
-        <img src="assets/reporting-suite.png" alt="Automated Reporting Suite" class="project-image"/>
-        <div class="project-content">
-          <h3>Automated Reporting Suite</h3>
-          <p>Developed a PowerShell-based reporting system that halved manual testing time and delivered real-time analytics to Samsung engineers.</p>
-          <a href="https://github.com/pruittcolon/reporting-suite" target="_blank">View Code</a>
-        </div>
+        <h3>JavaFX Weather Suite</h3>
+        <p>Single-file JavaFX application integrating animated UI, OpenWeather API calls, and glassmorphic styling to showcase async network handling.</p>
       </div>
       <div class="project-card">
-        <img src="assets/workflow-dashboard.png" alt="Telecom Workflow Dashboard" class="project-image"/>
-        <div class="project-content">
-          <h3>Telecom Workflow Dashboard</h3>
-          <p>Built interactive dashboards in PowerBI to visualize network bottlenecks, improving pre-launch issue detection by 40%.</p>
-          <a href="https://github.com/pruittcolon/telecom-dashboard" target="_blank">View Code</a>
-        </div>
+        <h3>Real-Time Voice Transcriber</h3>
+        <p>Python-Tkinter GUI that streams mic input through Whisper models, displays live captions, and auto-archives transcripts with multithreading.</p>
       </div>
       <div class="project-card">
-        <img src="assets/device-test-automation.png" alt="Device Test Automation" class="project-image"/>
-        <div class="project-content">
-          <h3>Device Test Automation</h3>
-          <p>Implemented end-to-end device QA scripts that reduced human error and increased throughput by scripting ADB interactions and Excel exports.</p>
-          <a href="https://github.com/pruittcolon/test-automation" target="_blank">View Code</a>
-        </div>
+        <h3>Network KPI Analyzer</h3>
+        <p>Python ETL pipeline that parses drive-test logs, calculates KPIs with Pandas, and outputs interactive PowerBI datasets for rapid insights.</p>
+      </div>
+      <div class="project-card">
+        <h3>Secure ChatGPT Frontend</h3>
+        <p>Vanilla JS UI served by a minimal Node.js proxy. Protects API key in memory, streams responses, and parses markdown to HTML.</p>
+      </div>
+      <div class="project-card">
+        <h3>AR Glasses Control Prototype</h3>
+        <p>Java client for Even Realities G1 glasses. Uses serial comms and JNI to send commands and render telemetry overlays.</p>
+      </div>
+      <div class="project-card">
+        <h3>Stick-Figure Break Game</h3>
+        <p>HTML5 Canvas game in pure JS. Encourages micro-breaks with simple collision logic, sprite animation, and audio cues.</p>
       </div>
     </section>
   </div>
 
-  <footer>
-    &copy; 2025 Pruitt Colon — whyhirepruitt.dev
-  </footer>
+  <footer>© 2025 Pruitt Colon | whyhirepruitt.dev</footer>
+
+  <script>
+    /* NAV SHRINK */
+    const nav=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+    /* MOBILE MENU */
+    document.getElementById('menu-toggle').addEventListener('click',()=>document.getElementById('nav-links').classList.toggle('open'));
+    /* tsParticles Configuration */
+    tsParticles.load('tsparticles', {
+      fullScreen:{ enable:true, zIndex:-1 },
+      fpsLimit:60,
+      detectRetina:true,
+      particles:{
+        number:{ value:60, density:{ enable:true, area:800 } },
+        color:{ value:'#00aaff' },
+        shape:{ type:'circle' },
+        opacity:{ value:0.5, random:false },
+        size:{ value:{ min:1, max:4 } },
+        links:{ enable:true, distance:150, color:'#00aaff', opacity:0.4, width:1 },
+        move:{ enable:true, speed:1.5, direction:'none', outModes:{ default:'out' } }
+      }
+    });
+    /* REVEAL ON SCROLL */
+    const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.15});
+    document.querySelectorAll('.project-card').forEach(c=>observer.observe(c));
+  </script>
 </body>
 </html>
