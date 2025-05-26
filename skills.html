@@ -4,109 +4,153 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Skills • Why Hire Pruitt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
   <style>
-    :root {
-      --bg: #f4f6f9;
-      --fg: #1c1e21;
-      --accent: #0066ff;
-      --card: #ffffff;
-      --radius: 1.2rem;
-      --shadow: 0 8px 32px rgba(0,0,0,0.1);
-      --transition: all 0.3s ease;
+    :root{
+      --bg-1:#0c0e11;
+      --bg-2:#0f1219;
+      --accent:#00aaff;
+      --text:#f0f6ff;
+      --card-bg:rgba(255,255,255,0.07);
+      --card-border:rgba(255,255,255,0.18);
+      --radius:1rem;
+      --shadow:0 0 20px rgba(0,170,255,0.28);
+      --transition:all .3s ease;
     }
-    * { margin:0; padding:0; box-sizing:border-box }
-    body {
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--fg);
-      line-height:1.6;
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    body{
+      font-family:"Inter",sans-serif;
+      background:linear-gradient(130deg,var(--bg-1)0%,var(--bg-2)100%);
+      background-size:400% 400%;
+      animation:gradientMove 15s ease-in-out infinite;
+      color:var(--text);
+      overflow-x:hidden;
     }
-    a {
-      color:var(--accent);
-      text-decoration:none;
+    @keyframes gradientMove{
+      0%{background-position:0 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0 50%}
+    }
+
+    /* particles canvas */
+    #tsparticles{position:fixed;inset:0;z-index:-1}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;width:100%;
+      padding:1rem 3rem;
+      display:flex;justify-content:space-between;align-items:center;
+      backdrop-filter:blur(12px);
+      background:rgba(0,0,0,.25);
+      border-bottom:1px solid rgba(255,255,255,.06);
       transition:var(--transition);
+      z-index:1000;
     }
-    a:hover { text-decoration:underline }
-    nav {
-      background:var(--card);
-      box-shadow:var(--shadow);
-      padding:1rem 2rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      z-index:100;
+    nav.scrolled{padding:.6rem 3rem;background:rgba(0,0,0,.55)}
+    .brand{font-family:"Orbitron",sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.03em}
+    .nav-links{list-style:none;display:flex;gap:2rem}
+    .nav-links a{text-decoration:none;color:var(--text);font-weight:600;position:relative}
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;
+      background:var(--accent);transition:var(--transition)
     }
-    .nav-links {
-      list-style:none;
-      display:flex;
-      gap:1.5rem;
+    .nav-links a:hover::after{width:100%}
+
+    /* MOBILE NAV */
+    .menu-toggle{display:none;background:none;border:none;font-size:1.8rem;color:var(--text);cursor:pointer}
+    @media(max-width:720px){
+      .menu-toggle{display:block}
+      .nav-links{
+        position:absolute;top:100%;left:0;right:0;
+        flex-direction:column;
+        background:rgba(0,0,0,.92);
+        padding:1.5rem 3rem;
+        gap:1.2rem;
+        transform:translateY(-120%);
+        opacity:0;pointer-events:none;
+        transition:var(--transition)
+      }
+      .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}
     }
-    .nav-links a { font-weight:600 }
-    .container {
-      width:90%;
-      max-width:1100px;
-      margin:0 auto;
-      padding:2rem 0;
-    }
-    header.page-header {
-      text-align:center;
-      margin-bottom:2rem;
-    }
-    header.page-header h1 {
-      font-size:2.8rem;
-      margin-bottom:0.4rem;
-    }
-    header.page-header p {
-      font-size:1.1rem;
-      font-weight:500;
+
+    /* WRAPPER */
+    .wrapper{width:90%;max-width:1100px;margin:7rem auto 0 auto;animation:fadeIn .5s both}
+    header.page-header{text-align:center;margin-bottom:2rem}
+    header.page-header h1{
+      font-family:"Orbitron",sans-serif;
+      font-size:clamp(2.2rem,5vw,3.2rem);
       color:var(--accent);
+      margin-bottom:.5rem;
+      text-shadow:0 0 10px rgba(0,170,255,.5)
     }
-    section.skills {
-      display:grid;
-      gap:2rem;
-      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    header.page-header p{font-size:1.1rem;font-weight:500;opacity:.85}
+
+    /* SKILLS GRID */
+    .skills{
+      display:grid;gap:2rem;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      margin-bottom:3rem
     }
-    .skill-card {
-      background:var(--card);
+    .skill-card{
+      background:var(--card-bg);
+      backdrop-filter:blur(8px);
+      border:1px solid var(--card-border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       padding:1.8rem 1.5rem;
-      transition:transform var(--transition);
+      transition:var(--transition);
+      opacity:0;transform:translateY(40px);
+      display:flex;flex-direction:column
     }
-    .skill-card:hover { transform:translateY(-5px) }
-    .skill-card h3 {
-      margin-bottom:1rem;
+    .skill-card.visible{opacity:1;transform:translateY(0)}
+    .skill-card:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(0,170,255,.24)}
+    .skill-card h3{
+      margin-bottom:1rem;color:var(--accent);
+      font-size:1.32rem;font-family:"Orbitron",sans-serif
+    }
+    .skill-card ul{list-style:disc;margin-left:1.4rem}
+    .skill-card li{margin-bottom:.6rem;font-size:1rem}
+    .toggle{
+      margin-top:auto;
+      margin-bottom:.3rem;
+      align-self:flex-start;
+      background:transparent;
+      border:1px solid var(--accent);
       color:var(--accent);
-      font-size:1.35rem;
+      padding:.35rem .8rem;
+      border-radius:.4rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:var(--transition)
     }
-    .skill-card ul {
-      list-style:disc;
-      margin-left:1.4rem;
+    .toggle:hover{background:var(--accent);color:#000}
+    .anecdote{
+      font-size:.95rem;
+      margin-top:.8rem;
+      line-height:1.45;
+      display:none;
+      animation:fadeIn .3s both
     }
-    .skill-card li {
-      margin-bottom:0.6rem;
-      font-size:1rem;
-    }
-    footer {
-      text-align:center;
-      margin-top:3rem;
-      padding:1.5rem 0;
-      color:#666;
-      font-size:0.9rem;
-    }
-    @media (max-width:600px) {
-      .nav-links { flex-direction:column; gap:0.5rem }
-      nav { flex-direction:column; align-items:flex-start }
-    }
+
+    footer{text-align:center;margin-top:3rem;padding:1.5rem 0;color:#aaa;font-size:.9rem}
+
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   </style>
 </head>
 <body>
-  <nav>
-    <div><strong>Pruitt Colon</strong></div>
-    <ul class="nav-links">
+  <div id="tsparticles"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="brand">Pruitt Colon</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="skills.html">Skills</a></li>
@@ -115,54 +159,180 @@
     </ul>
   </nav>
 
-  <div class="container">
+  <!-- MAIN -->
+  <div class="wrapper">
     <header class="page-header">
       <h1>Skills</h1>
-      <p>Expertise & Technologies</p>
+      <p>Wireless Expertise and Technical Capabilities</p>
     </header>
 
-    <section class="skills">
+    <section class="skills" id="skills-grid">
+      <!-- 1 Lean -->
       <div class="skill-card">
-        <h3>Network Engineering</h3>
+        <h3>Lean Process Improvement</h3>
         <ul>
-          <li>TCP/IP, DNS, SNMP, BGP, OSPF</li>
-          <li>Wireless Testing & Spectrum Analysis</li>
-          <li>Router & Switch Configuration (Cisco, Juniper)</li>
-          <li>Protocol Debugging with Wireshark</li>
+          <li>Lean Six Sigma Green Belt</li>
+          <li>5S, Kaizen, root-cause sessions</li>
+          <li>KPI driven workflow optimisation</li>
+          <li>Continuous improvement coaching</li>
         </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Re-organised test toolboxes so every item had a labelled slot. Setup times fell thirty percent and missing tools dropped to zero. No detail is too small for optimisation.</p>
       </div>
+
+      <!-- 2 Automation -->
       <div class="skill-card">
         <h3>Automation & Scripting</h3>
         <ul>
-          <li>PowerShell & Cmdlets</li>
-          <li>Python & Bash</li>
-          <li>Azure CLI & AWS CLI</li>
-          <li>CI/CD Pipelines with GitHub Actions</li>
+          <li>PowerShell, Python, Bash</li>
+          <li>ADB log capture and parsing</li>
+          <li>CI pipelines with GitHub Actions</li>
+          <li>Data export to Excel & PowerBI</li>
         </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Built a PowerShell module that pulls device logs, crunches diffs, and emails a report. Test cycles dropped from two hours to under one, with fifty percent fewer manual errors.</p>
       </div>
+
+      <!-- 3 BSc -->
       <div class="skill-card">
-        <h3>Lean & Process Improvement</h3>
+        <h3>BSc Computer Science • Aug 2025</h3>
         <ul>
-          <li>Lean Six Sigma Green Belt</li>
-          <li>5S, Kaizen & Root Cause Analysis</li>
-          <li>Workflow Mapping & Optimization</li>
-          <li>Continuous Improvement Strategies</li>
+          <li>Data structures, OS, networks</li>
+          <li>Capstone JavaFX weather suite</li>
+          <li>Local ChatGPT frontend secured by API key</li>
+          <li>Real time voice transcriber in Python</li>
         </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Degree projects honed my Java, JavaScript, and systems skills. The JavaFX app merged animated UI with OpenWeather APIs, showcasing full stack delivery in one file.</p>
       </div>
+
+      <!-- 4 Mobile -->
       <div class="skill-card">
-        <h3>Tools & Technologies</h3>
+        <h3>Mobile & 5G Network Testing</h3>
         <ul>
-          <li>Git, GitHub & Version Control</li>
-          <li>VMware & Virtualization</li>
-          <li>Excel & PowerBI Dashboards</li>
-          <li>JIRA & Confluence</li>
+          <li>5G NR and LTE KPI analysis</li>
+          <li>Samsung certification & debug</li>
+          <li>Uplink CA, VoNR stress testing</li>
+          <li>Keysight, Anritsu, Spirent rigs</li>
         </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Identified an uplink carrier aggregation bug that threatened a firmware deadline. Provided logs and steps to Samsung engineers and the fix shipped the same sprint.</p>
+      </div>
+
+      <!-- 5 Telecom -->
+      <div class="skill-card">
+        <h3>Telecom Protocol Analysis</h3>
+        <ul>
+          <li>SIP, IMS, VoNR and VoLTE</li>
+          <li>3GPP 38.x and 36.x references</li>
+          <li>QXDM, NSG, Wireshark</li>
+          <li>QoS KPI dashboarding</li>
+        </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Discovered a rare signalling mismatch that quietly inflated customer error reports. Adjusted configs with the RAN team and complaints trended sharply down.</p>
+      </div>
+
+      <!-- 6 Fiber -->
+      <div class="skill-card">
+        <h3>Fiber-Optic Inspection</h3>
+        <ul>
+          <li>OTDR and X-ray diagnostics</li>
+          <li>Micron level inspection skills</li>
+          <li>Termination and splicing certs</li>
+          <li>Defect prevention workflows</li>
+        </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">At Subcom I used X-ray imaging to spot micro fractures in cable terminations. Early fixes saved thousands by avoiding cable rework down the line.</p>
+      </div>
+
+      <!-- 7 Leadership -->
+      <div class="skill-card">
+        <h3>Cross-Functional Leadership</h3>
+        <ul>
+          <li>Mentoring and upskilling peers</li>
+          <li>Stand-up facilitation</li>
+          <li>Remote timezone coordination</li>
+          <li>Stakeholder reporting</li>
+        </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Introduced scripting workshops that lifted automation adoption from five to forty-five percent of the team, cutting repetitive manual work across the board.</p>
+      </div>
+
+      <!-- 8 Quality -->
+      <div class="skill-card">
+        <h3>Quality Control Procedures</h3>
+        <ul>
+          <li>ISO and telecom compliance</li>
+          <li>Defect trend analysis</li>
+          <li>Statistical process control</li>
+          <li>Audit documentation</li>
+        </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Built a lightweight audit database that reduced escaped defects by twenty-five percent within one quarter through earlier issue detection.</p>
+      </div>
+
+      <!-- 9 Passion Projects -->
+      <div class="skill-card">
+        <h3>Passion Projects</h3>
+        <ul>
+          <li>JavaScript portfolio site (this one)</li>
+          <li>Python voice-to-text GUI</li>
+          <li>PowerShell LinkedIn auto-apply bot</li>
+          <li>Java AR glasses control prototype</li>
+        </ul>
+        <button class="toggle">Show example</button>
+        <p class="anecdote">Each project combines efficiency and experimentation: quick prototypes, iterative tweaks, and a clear focus on tangible workflow gains.</p>
       </div>
     </section>
   </div>
 
-  <footer>
-    &copy; 2025 Pruitt Colon — whyhirepruitt.dev
-  </footer>
+  <footer>© 2025 Pruitt Colon | whyhirepruitt.dev</footer>
+
+  <script>
+    /* NAV SHRINK */
+    const nav=document.getElementById("navbar");
+    window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",window.scrollY>60));
+
+    /* MOBILE MENU */
+    const toggleBtn=document.getElementById("menu-toggle");
+    const links=document.getElementById("nav-links");
+    toggleBtn.addEventListener("click",()=>links.classList.toggle("open"));
+
+    /* PARTICLES */
+    tsParticles.load("tsparticles",{
+      background:{color:{value:"transparent"}},
+      fpsLimit:60,
+      particles:{
+        number:{value:70,density:{enable:true,area:900}},
+        color:{value:"#00aaff"},
+        shape:{type:"circle"},
+        opacity:{value:0.5,random:true},
+        size:{value:{min:1,max:4}},
+        links:{enable:true,distance:130,color:"#00aaff",opacity:0.35,width:1},
+        move:{enable:true,speed:1.2,outModes:{default:"bounce"}}
+      },
+      detectRetina:true
+    });
+
+    /* REVEAL ON SCROLL */
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      })
+    },{threshold:0.15});
+    document.querySelectorAll(".skill-card").forEach(el=>observer.observe(el));
+
+    /* TOGGLE ANECDOTES */
+    document.querySelectorAll(".toggle").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const a=btn.nextElementSibling;
+        a.style.display=a.style.display==="block"?"none":"block";
+        btn.textContent=a.style.display==="block"?"Hide example":"Show example";
+      })
+    });
+  </script>
 </body>
 </html>
