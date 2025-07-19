@@ -238,7 +238,22 @@
       color: #aaa;
       font-size: .9rem;
     }
-
+@media (max-width: 600px) {
+  .summary-grid {
+    /* switch off the three-col layout entirely */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* make absolutely sure it fills the card’s width */
+    width: 100%;
+    overflow: visible;
+  }
+  .summary-item {
+    /* let each block expand to full width */
+    flex: 1 1 100%;
+    margin: 0;
+  }
+}
     /* spacing between each role */
     .card h4 {
       margin-top: 1.5rem;
