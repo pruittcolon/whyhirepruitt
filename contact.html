@@ -100,7 +100,9 @@
       cursor: pointer;
     }
     @media (max-width: 720px) {
-      .menu-toggle { display: block; }
+      .menu-toggle {
+        display: block;
+      }
       .nav-links {
         position: absolute;
         top: 100%;
@@ -199,21 +201,29 @@
       box-shadow: 0 0 10px rgba(0,170,255,.4);
     }
 
-    /* success message with pop‑in glow */
+    /* pop-in glow */
     .success-message {
-      display: block;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: #7cff9c;
       text-shadow: 0 0 12px #7cff9c;
       opacity: 0;
-      transform: scale(0.8);
-      transition: opacity .6s ease, transform .6s ease;
+      transform: scale(0.5);
+      display: none;
+    }
+    .success-message.show {
+      display: block;
+      animation: popIn 0.6s ease-out forwards, glowPulse 1.5s ease-in-out 0.6s infinite alternate;
       text-align: center;
       margin-top: 1rem;
     }
-    .success-message.show {
-      opacity: 1;
-      transform: scale(1);
+    @keyframes popIn {
+      0%   { opacity: 0; transform: scale(0.5); }
+      80%  { opacity: 1; transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 12px #7cff9c; }
+      to   { text-shadow: 0 0 24px #7cff9c; }
     }
 
     .error-message {
@@ -224,7 +234,7 @@
       display: none;
     }
 
-    /* overlay for spinner */
+    /* spinner overlay */
     #submitOverlay {
       position: fixed;
       inset: 0;
@@ -234,10 +244,7 @@
       justify-content: center;
       z-index: 2000;
     }
-    .tech-loader {
-      text-align: center;
-      color: var(--accent);
-    }
+    .tech-loader { text-align: center; color: var(--accent); }
     .tech-loader svg {
       width: 120px;
       height: 120px;
@@ -288,10 +295,9 @@
           class="contact-form"
           action="https://api.web3forms.com/submit"
           method="POST">
-
       <input type="hidden"
              name="access_key"
-             value="YOUR_ACCESS_KEY_HERE">
+             value="fd000586-0b1f-424f-b6ad-f1546ca00190">
 
       <div class="field-group">
         <label for="name">Name</label>
@@ -323,7 +329,7 @@
       <button type="submit" class="send-btn">Send Message</button>
 
       <div class="success-message" id="success-message">
-        Thank you! Your message has been sent.
+        Thank you! Your message has been sent and I will contact you shortly.
       </div>
       <div class="error-message" id="error-message">
         Oops! Something went wrong.
@@ -343,18 +349,15 @@
   <footer>© 2025 Pruitt Colon | whyhirepruitt.dev</footer>
 
   <script>
-    // nav shrink
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () =>
       nav.classList.toggle('scrolled', window.scrollY > 60)
     );
 
-    // mobile menu toggle
     document.getElementById('menu-toggle').addEventListener('click', () =>
       document.getElementById('nav-links').classList.toggle('open')
     );
 
-    // particles background
     tsParticles.load('tsparticles', {
       fullScreen: { enable: true, zIndex: -1 },
       fpsLimit: 60,
@@ -376,21 +379,17 @@
       }
     });
 
-    // form submit with spinner + pop-in success
-    const form = document.getElementById('contactForm');
-    const overlay = document.getElementById('submitOverlay');
+    const form       = document.getElementById('contactForm');
+    const overlay    = document.getElementById('submitOverlay');
     const successMsg = document.getElementById('success-message');
-    const errorMsg = document.getElementById('error-message');
+    const errorMsg   = document.getElementById('error-message');
 
     form.addEventListener('submit', async event => {
       event.preventDefault();
-
-      // reset previous messages
       successMsg.classList.remove('show');
       successMsg.style.display = 'none';
-      errorMsg.style.display = 'none';
+      errorMsg.style.display   = 'none';
 
-      // show spinner
       overlay.style.display = 'flex';
 
       const data = new FormData(form);
@@ -399,19 +398,17 @@
           method: 'POST',
           body: data
         });
-        // wait for spinner animation
         await new Promise(r => setTimeout(r, 1800));
         overlay.style.display = 'none';
 
         if (res.ok) {
           form.reset();
           successMsg.style.display = 'block';
-          // small timeout to trigger transition
           setTimeout(() => successMsg.classList.add('show'), 50);
         } else {
           errorMsg.style.display = 'block';
         }
-      } catch (err) {
+      } catch (e) {
         overlay.style.display = 'none';
         errorMsg.style.display = 'block';
       }
