@@ -102,10 +102,18 @@
 /* Turn the three items into a responsive grid */
 .summary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin-top: 1rem;
 }
+
+/* optional: if it still gets too tight, allow a little horizontal scroll */
+@media (max-width: 600px) {
+  .summary-grid {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+}
+
 
 /* Style each bit’s title */
 .summary-item h4 {
