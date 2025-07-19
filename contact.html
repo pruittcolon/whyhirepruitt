@@ -42,7 +42,6 @@
       inset: 0;
       z-index: -1;
     }
-
     nav {
       position: fixed;
       top: 0;
@@ -124,7 +123,6 @@
         pointer-events: auto;
       }
     }
-
     .wrapper {
       width: 90%;
       max-width: 800px;
@@ -141,7 +139,7 @@
     }
     header.page-header h1 {
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.2rem,5vw,3.2rem);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
       color: var(--accent);
       margin-bottom: .5rem;
       text-shadow: 0 0 10px rgba(0,170,255,.5);
@@ -151,7 +149,6 @@
       font-weight: 500;
       opacity: .85;
     }
-
     form.contact-form {
       background: var(--card-bg);
       backdrop-filter: blur(8px);
@@ -201,7 +198,6 @@
       background: #0088dd;
       box-shadow: 0 0 10px rgba(0,170,255,.4);
     }
-
     .success-message,
     .error-message {
       text-align: center;
@@ -215,8 +211,7 @@
     .error-message {
       color: #ff5c5c;
     }
-
-    /* overlay for submit animation */
+    /* overlay for tech animation */
     #submitOverlay {
       position: fixed;
       inset: 0;
@@ -276,28 +271,49 @@
       <p>Let’s build something great together</p>
     </header>
 
-    <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="fd000586-0b1f-424f-b6ad-f1546ca00190">
+    <form id="contactForm"
+          class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST">
+      <input type="hidden"
+             name="access_key"
+             value="fd000586-0b1f-424f-b6ad-f1546ca00190">
 
       <div class="field-group">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" required placeholder="Your Name">
+        <input type="text"
+               name="name"
+               id="name"
+               required
+               placeholder="Your Name">
       </div>
 
       <div class="field-group">
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" required placeholder="you@example.com">
+        <input type="email"
+               name="email"
+               id="email"
+               required
+               placeholder="you@example.com">
       </div>
 
       <div class="field-group">
         <label for="message">Message</label>
-        <textarea name="message" id="message" rows="5" required placeholder="What opportunity would you like to discuss?"></textarea>
+        <textarea name="message"
+                  id="message"
+                  rows="5"
+                  required
+                  placeholder="What opportunity would you like to discuss?"></textarea>
       </div>
 
       <button type="submit" class="send-btn">Send Message</button>
 
-      <div class="success-message" id="success-message">Thank you! Your message has been sent.</div>
-      <div class="error-message" id="error-message">Oops! Something went wrong.</div>
+      <div class="success-message" id="success-message">
+        Thank you! Your message has been sent.
+      </div>
+      <div class="error-message" id="error-message">
+        Oops! Something went wrong.
+      </div>
     </form>
 
     <div id="submitOverlay">
@@ -319,12 +335,12 @@
       nav.classList.toggle('scrolled', window.scrollY > 60)
     );
 
-    // mobile menu
+    // mobile toggle
     document.getElementById('menu-toggle').addEventListener('click', () =>
       document.getElementById('nav-links').classList.toggle('open')
     );
 
-    // particles background
+    // particles bg
     tsParticles.load('tsparticles', {
       fullScreen: { enable: true, zIndex: -1 },
       fpsLimit: 60,
@@ -335,7 +351,13 @@
         shape: { type: 'circle' },
         opacity: { value: 0.5, random: true },
         size: { value: { min: 1, max: 4 } },
-        links: { enable: true, distance: 130, color: '#00aaff', opacity: 0.35, width: 1 },
+        links: {
+          enable: true,
+          distance: 130,
+          color: '#00aaff',
+          opacity: 0.35,
+          width: 1
+        },
         move: { enable: true, speed: 1.2, outModes: { default: 'bounce' } }
       }
     });
@@ -352,22 +374,21 @@
 
       const data = new FormData(form);
       try {
-        const response = await fetch(form.action, {
+        const res = await fetch(form.action, {
           method: 'POST',
           body: data
         });
-
-        // wait for animation to finish
-        await new Promise(resolve => setTimeout(resolve, 1800));
+        // wait for spinner
+        await new Promise(r => setTimeout(r, 1800));
         overlay.style.display = 'none';
 
-        if (response.ok) {
+        if (res.ok) {
           successMsg.style.display = 'block';
           form.reset();
         } else {
           errorMsg.style.display = 'block';
         }
-      } catch (err) {
+      } catch (e) {
         overlay.style.display = 'none';
         errorMsg.style.display = 'block';
       }
