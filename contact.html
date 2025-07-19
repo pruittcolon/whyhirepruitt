@@ -100,9 +100,7 @@
       cursor: pointer;
     }
     @media (max-width: 720px) {
-      .menu-toggle {
-        display: block;
-      }
+      .menu-toggle { display: block; }
       .nav-links {
         position: absolute;
         top: 100%;
@@ -123,6 +121,7 @@
         pointer-events: auto;
       }
     }
+
     .wrapper {
       width: 90%;
       max-width: 800px;
@@ -139,7 +138,7 @@
     }
     header.page-header h1 {
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-size: clamp(2.2rem,5vw,3.2rem);
       color: var(--accent);
       margin-bottom: .5rem;
       text-shadow: 0 0 10px rgba(0,170,255,.5);
@@ -149,6 +148,7 @@
       font-weight: 500;
       opacity: .85;
     }
+
     form.contact-form {
       background: var(--card-bg);
       backdrop-filter: blur(8px);
@@ -198,20 +198,33 @@
       background: #0088dd;
       box-shadow: 0 0 10px rgba(0,170,255,.4);
     }
-    .success-message,
+
+    /* success message with pop‑in glow */
+    .success-message {
+      display: block;
+      font-size: 1.6rem;
+      color: #7cff9c;
+      text-shadow: 0 0 12px #7cff9c;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity .6s ease, transform .6s ease;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .success-message.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     .error-message {
       text-align: center;
       margin-top: 1rem;
       font-weight: 600;
+      color: #ff5c5c;
       display: none;
     }
-    .success-message {
-      color: lightgreen;
-    }
-    .error-message {
-      color: #ff5c5c;
-    }
-    /* overlay for tech animation */
+
+    /* overlay for spinner */
     #submitOverlay {
       position: fixed;
       inset: 0;
@@ -275,6 +288,7 @@
           class="contact-form"
           action="https://api.web3forms.com/submit"
           method="POST">
+
       <input type="hidden"
              name="access_key"
              value="fd000586-0b1f-424f-b6ad-f1546ca00190">
@@ -335,12 +349,12 @@
       nav.classList.toggle('scrolled', window.scrollY > 60)
     );
 
-    // mobile toggle
+    // mobile menu toggle
     document.getElementById('menu-toggle').addEventListener('click', () =>
       document.getElementById('nav-links').classList.toggle('open')
     );
 
-    // particles bg
+    // particles background
     tsParticles.load('tsparticles', {
       fullScreen: { enable: true, zIndex: -1 },
       fpsLimit: 60,
@@ -362,7 +376,7 @@
       }
     });
 
-    // form submit with tech animation
+    // form submit with spinner + pop-in success
     const form = document.getElementById('contactForm');
     const overlay = document.getElementById('submitOverlay');
     const successMsg = document.getElementById('success-message');
@@ -370,6 +384,13 @@
 
     form.addEventListener('submit', async event => {
       event.preventDefault();
+
+      // reset previous messages
+      successMsg.classList.remove('show');
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      // show spinner
       overlay.style.display = 'flex';
 
       const data = new FormData(form);
@@ -378,17 +399,19 @@
           method: 'POST',
           body: data
         });
-        // wait for spinner
+        // wait for spinner animation
         await new Promise(r => setTimeout(r, 1800));
         overlay.style.display = 'none';
 
         if (res.ok) {
-          successMsg.style.display = 'block';
           form.reset();
+          successMsg.style.display = 'block';
+          // small timeout to trigger transition
+          setTimeout(() => successMsg.classList.add('show'), 50);
         } else {
           errorMsg.style.display = 'block';
         }
-      } catch (e) {
+      } catch (err) {
         overlay.style.display = 'none';
         errorMsg.style.display = 'block';
       }
