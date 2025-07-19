@@ -92,6 +92,34 @@
     .nav-links a:hover::after {
       width: 100%;
     }
+    .summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+/* Turn the three items into a responsive grid */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Style each bit’s title */
+.summary-item h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+/* Body text in each column */
+.summary-item p {
+  color: var(--text);
+  line-height: 1.6;
+}
     .menu-toggle {
       display: none;
       background: none;
@@ -237,24 +265,34 @@
       </div>
     </div>
 
-    <div class="section">
-      <div class="card">
-        <h3>Summary</h3>
+   <div class="section">
+  <div class="card summary-card">
+    <h3>Summary</h3>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <h4>Who I Am</h4>
         <p>
-          Detail-oriented Telecom and Network Specialist with 8+ years of experience
-          in fiber optic inspection, network testing, and quality assurance across
-          telecommunications and IT environments. Skilled in troubleshooting,
-          performance optimization, and ensuring adherence to industry standards
-          and project specifications. Experienced in cross-functional collaboration,
-          field inspections, and using advanced diagnostic tools such as OTDR and
-          network analyzers. Holds a Lean Six Sigma Green Belt and excels at
-          identifying process improvements, enhancing network reliability, and
-          supporting high-quality service delivery. Seeking to leverage hands-on
-          technical expertise and problem-solving skills in a fast-paced,
-          growth-oriented role.
+          Detail‑oriented telecom and network specialist with over eight years of hands‑on experience in fiber‑optic inspection, network testing and quality assurance across both telecom and IT environments.
+        </p>
+      </div>
+
+      <div class="summary-item">
+        <h4>What I Do</h4>
+        <p>
+          I troubleshoot complex issues, optimize system performance and lead field inspections. I collaborate with cross‑functional teams and use advanced diagnostic tools such as OTDR and network analyzers to ensure every project meets industry standards.
+        </p>
+      </div>
+
+      <div class="summary-item">
+        <h4>What I Bring</h4>
+        <p>
+          As a certified Lean Six Sigma Green Belt, I have a proven record of identifying process improvements that boost network reliability and deliver high‑quality service. I am eager to apply my technical expertise and problem‑solving skills in a fast‑paced, growth‑oriented role.
         </p>
       </div>
     </div>
+  </div>
+</div>
 
     <div class="section">
       <div class="card">
@@ -263,12 +301,10 @@
         <h4>Network Engineer • BTI Solutions</h4>
         <p><em>Jun 2024 – Jun 2025</em></p>
         <ul>
-          <li>Mobile & telecom system validation for max uptime</li>
           <li>Test case design & execution for network upgrades</li>
           <li>Dashboard‑driven KPI monitoring & compliance</li>
           <li>Cross‑team troubleshooting & root cause resolution</li>
           <li>Designed and implemented automated network test scripts using PowerShell</li>
-          <li>Collaborated with security team to enforce data protection policies</li>
           <li>Authored network architecture and troubleshooting guides to onboard new engineers</li>
         </ul>
 
@@ -280,8 +316,6 @@
           <li>Ensured stakeholder goals were met through structured inspections and reporting</li>
           <li>Performed OTDR and precision caliper inspections to maintain quality compliance</li>
           <li>Coordinated fiber plant deployments across multiple sites, managing schedules and resources</li>
-          <li>Developed best practice guides and safety protocols for fiber installations</li>
-          <li>Executed preventative maintenance schedules to reduce service interruptions</li>
         </ul>
 
         <h4>Integration Technician • Subcom</h4>
@@ -289,11 +323,9 @@
         <ul>
           <li>Consistently recognized as the highest production worker on the team</li>
           <li>Conducted high‑level QA analysis using radiographs to meet strict SOP requirements</li>
-          <li>Led splice inspection and process audits to maintain project delivery targets</li>
           <li>Managed inventory of fiber materials and maintained accurate tracking records</li>
           <li>Developed installation checklists that improved first‑pass acceptance rates</li>
           <li>Participated in lean workshops to streamline integration workflows and reduce waste</li>
-          <li>Trained junior technicians on installation procedures and safety standards</li>
         </ul>
       </div>
     </div>
