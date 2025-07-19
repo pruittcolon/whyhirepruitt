@@ -37,11 +37,194 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0 50%; }
     }
-    #tsparticles { position: fixed; inset: 0; z-index: -1; }
+    #tsparticles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.25);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+    nav.scrolled {
+      padding: .6rem 3rem;
+      background: rgba(0,0,0,0.55);
+    }
+    .brand {
+      font-family: "Orbitron", sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: .03em;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+    @media (max-width: 720px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(0,0,0,0.92);
+        padding: 1.4rem 3rem;
+        gap: 1.2rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
 
-    /* nav, layout, form styling omitted for brevity – keep yours as before */
+    .wrapper {
+      width: 90%;
+      max-width: 800px;
+      margin: 7rem auto 0 auto;
+      animation: fadeIn .5s both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header.page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header.page-header h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.2rem,5vw,3.2rem);
+      color: var(--accent);
+      margin-bottom: .5rem;
+      text-shadow: 0 0 10px rgba(0,170,255,.5);
+    }
+    header.page-header p {
+      font-size: 1.1rem;
+      font-weight: 500;
+      opacity: .85;
+    }
 
-    /* spinner overlay */
+    form.contact-form {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      display: grid;
+      gap: 1.4rem;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .field-group label {
+      margin-bottom: .5rem;
+      font-weight: 600;
+    }
+    .field-group input,
+    .field-group textarea {
+      padding: .8rem;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: .6rem;
+      font-size: 1rem;
+      background: rgba(0,0,0,.3);
+      color: var(--text);
+      transition: var(--transition);
+    }
+    .field-group input:focus,
+    .field-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 6px rgba(0,170,255,.4);
+    }
+    .send-btn {
+      background: var(--accent);
+      color: #000;
+      padding: .9rem 1.6rem;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .send-btn:hover {
+      background: #0088dd;
+      box-shadow: 0 0 10px rgba(0,170,255,.4);
+    }
+
+    /* success message with pop‑in glow */
+    .success-message {
+      display: block;
+      font-size: 1.6rem;
+      color: #7cff9c;
+      text-shadow: 0 0 12px #7cff9c;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity .6s ease, transform .6s ease;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .success-message.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .error-message {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #ff5c5c;
+      display: none;
+    }
+
+    /* overlay for spinner */
     #submitOverlay {
       position: fixed;
       inset: 0;
@@ -51,7 +234,10 @@
       justify-content: center;
       z-index: 2000;
     }
-    .tech-loader { text-align: center; color: var(--accent); }
+    .tech-loader {
+      text-align: center;
+      color: var(--accent);
+    }
     .tech-loader svg {
       width: 120px;
       height: 120px;
@@ -69,51 +255,28 @@
       margin-top: 1rem;
       font-weight: 600;
       opacity: 0;
-      animation: fadeInText 0.6s 1.2s forwards;
+      animation: fadeIn 0.6s 1.2s forwards;
     }
     @keyframes dash {
       to { stroke-dashoffset: 0; }
-    }
-    @keyframes fadeInText {
-      to { opacity: 1; }
-    }
-
-    /* success message pop‑in + glow */
-    .success-message {
-      font-size: 1.6rem;
-      color: #7cff9c;
-      text-shadow: 0 0 12px #7cff9c;
-      opacity: 0;
-      transform: scale(0.5);
-      display: none;
-    }
-    .success-message.show {
-      display: block;
-      animation: popIn 0.6s ease-out forwards, glowPulse 1.5s ease-in-out 0.6s infinite alternate;
-    }
-    @keyframes popIn {
-      0%   { opacity: 0; transform: scale(0.5); }
-      80%  { opacity: 1; transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    @keyframes glowPulse {
-      from { text-shadow: 0 0 12px #7cff9c; }
-      to   { text-shadow: 0 0 24px #7cff9c; }
-    }
-
-    .error-message {
-      text-align: center;
-      margin-top: 1rem;
-      font-weight: 600;
-      color: #ff5c5c;
-      display: none;
     }
   </style>
 </head>
 <body>
   <div id="tsparticles"></div>
 
-  <!-- keep your nav and wrapper exactly as before -->
+  <nav id="navbar">
+    <div class="brand">Pruitt Colon</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html" target="_blank">Resume</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <div class="wrapper">
     <header class="page-header">
@@ -125,11 +288,37 @@
           class="contact-form"
           action="https://api.web3forms.com/submit"
           method="POST">
+
       <input type="hidden"
              name="access_key"
-             value="fd000586-0b1f-424f-b6ad-f1546ca00190">
+             value="YOUR_ACCESS_KEY_HERE">
 
-      <!-- your name, email, message fields unchanged -->
+      <div class="field-group">
+        <label for="name">Name</label>
+        <input type="text"
+               name="name"
+               id="name"
+               required
+               placeholder="Your Name">
+      </div>
+
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input type="email"
+               name="email"
+               id="email"
+               required
+               placeholder="you@example.com">
+      </div>
+
+      <div class="field-group">
+        <label for="message">Message</label>
+        <textarea name="message"
+                  id="message"
+                  rows="5"
+                  required
+                  placeholder="What opportunity would you like to discuss?"></textarea>
+      </div>
 
       <button type="submit" class="send-btn">Send Message</button>
 
@@ -154,19 +343,52 @@
   <footer>© 2025 Pruitt Colon | whyhirepruitt.dev</footer>
 
   <script>
-    // nav shrink, mobile menu, particles – keep your existing code
+    // nav shrink
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () =>
+      nav.classList.toggle('scrolled', window.scrollY > 60)
+    );
 
-    const form       = document.getElementById('contactForm');
-    const overlay    = document.getElementById('submitOverlay');
+    // mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', () =>
+      document.getElementById('nav-links').classList.toggle('open')
+    );
+
+    // particles background
+    tsParticles.load('tsparticles', {
+      fullScreen: { enable: true, zIndex: -1 },
+      fpsLimit: 60,
+      detectRetina: true,
+      particles: {
+        number: { value: 70, density: { enable: true, area: 900 } },
+        color: { value: '#00aaff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: { min: 1, max: 4 } },
+        links: {
+          enable: true,
+          distance: 130,
+          color: '#00aaff',
+          opacity: 0.35,
+          width: 1
+        },
+        move: { enable: true, speed: 1.2, outModes: { default: 'bounce' } }
+      }
+    });
+
+    // form submit with spinner + pop-in success
+    const form = document.getElementById('contactForm');
+    const overlay = document.getElementById('submitOverlay');
     const successMsg = document.getElementById('success-message');
-    const errorMsg   = document.getElementById('error-message');
+    const errorMsg = document.getElementById('error-message');
 
     form.addEventListener('submit', async event => {
       event.preventDefault();
-      // hide old messages
+
+      // reset previous messages
       successMsg.classList.remove('show');
       successMsg.style.display = 'none';
-      errorMsg.style.display   = 'none';
+      errorMsg.style.display = 'none';
 
       // show spinner
       overlay.style.display = 'flex';
@@ -177,14 +399,14 @@
           method: 'POST',
           body: data
         });
-        // wait spinner finish
+        // wait for spinner animation
         await new Promise(r => setTimeout(r, 1800));
         overlay.style.display = 'none';
 
         if (res.ok) {
           form.reset();
-          // show pop‑in glow
           successMsg.style.display = 'block';
+          // small timeout to trigger transition
           setTimeout(() => successMsg.classList.add('show'), 50);
         } else {
           errorMsg.style.display = 'block';
