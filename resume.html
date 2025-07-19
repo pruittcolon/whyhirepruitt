@@ -99,18 +99,22 @@
   padding: 2rem;
 }
 
-/* Turn the three items into a responsive grid */
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
-/* optional: if it still gets too tight, allow a little horizontal scroll */
+/* mobile: force one row, allow scroll */
 @media (max-width: 600px) {
   .summary-grid {
+    display: flex;
     overflow-x: auto;
-    padding-bottom: 1rem;
+    gap: 1rem;
+    padding-bottom: 0.5rem; /* give room for the scrollbar */
+  }
+  .summary-item {
+    flex: 0 0 240px;  /* each card stays 240px wide */
   }
 }
 
