@@ -7,51 +7,209 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
   <style>
-    :root{
-      --bg-1:#0c0e11;
-      --bg-2:#0f1219;
-      --accent:#00aaff;
-      --text:#f0f6ff;
-      --card-bg:rgba(255,255,255,0.07);
-      --card-border:rgba(0,170,255,0.4);
-      --radius:1rem;
-      --transition:all .3s ease;
-      --shadow-min:0 0 20px rgba(0,170,255,0.4);
-      --shadow-max:0 0 40px rgba(0,170,255,0.6);
+    :root {
+      --bg-1: #0c0e11;
+      --bg-2: #0f1219;
+      --accent: #00aaff;
+      --text: #f0f6ff;
+      --card-bg: rgba(255,255,255,0.07);
+      --card-border: rgba(0,170,255,0.4);
+      --radius: 1rem;
+      --transition: all .3s ease;
+      --shadow-min: 0 0 20px rgba(0,170,255,0.4);
+      --shadow-max: 0 0 40px rgba(0,170,255,0.6);
     }
-    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    body{
-      font-family:'Inter',sans-serif;
-      background:linear-gradient(130deg,var(--bg-1)0%,var(--bg-2)100%);
-      background-size:200% 200%;
-      animation:gradientBG 12s ease infinite;
-      color:var(--text);
-      overflow-x:hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
-    @keyframes gradientBG{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-    #tsparticles{position:fixed;inset:0;z-index:-1}
-    nav{position:fixed;top:0;left:0;width:100%;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.1);transition:var(--transition);z-index:1000}
-    nav.scrolled{padding:.6rem 3rem;background:rgba(0,0,0,0.6)}
-    .brand{font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:800;color:var(--accent)}
-    .nav-links{display:flex;gap:2rem;list-style:none}
-    .nav-links a{color:var(--text);font-weight:600;text-decoration:none;position:relative}
-    .nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:var(--transition)}
-    .nav-links a:hover::after{width:100%}
-    .menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.8rem;cursor:pointer}
-    @media(max-width:720px){.menu-toggle{display:block}.nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(0,0,0,0.92);padding:1.5rem 3rem;gap:1.2rem;transform:translateY(-120%);opacity:0;pointer-events:none;transition:var(--transition)}.nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}}
-    .wrapper{width:90%;max-width:900px;margin:7rem auto 0 auto;animation:fadeIn .5s both}
-    h1{text-align:center;font-family:'Orbitron',sans-serif;font-size:2.8rem;color:var(--accent);margin-bottom:1rem;text-shadow:0 0 10px rgba(0,170,255,0.5)}
-    .section{margin-bottom:2.5rem}
-    .section-header{text-align:center;font-family:'Orbitron',sans-serif;color:var(--accent);font-size:1.8rem;margin-bottom:1rem}
-    .card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow-min);transition:var(--transition)}
-    .card:hover{box-shadow:var(--shadow-max)}
-    .card h3{color:var(--accent);font-size:1.2rem;margin-bottom:.5rem;font-family:'Orbitron',sans-serif}
-    .card p,.card ul{font-size:1rem;line-height:1.6}
-    .card ul{list-style:disc;margin-left:1.4rem}
-    .btn-link{display:inline-block;margin-top:1rem;padding:.6rem 1.2rem;border:1px solid var(--accent);border-radius:var(--radius);color:var(--accent);text-decoration:none;font-weight:600;transition:var(--transition)}
-    .btn-link:hover{background:var(--accent);color:#000;box-shadow:0 0 10px rgba(0,170,255,0.4)}
-    footer{text-align:center;padding:1.5rem 0;color:#aaa;font-size:.9rem}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(130deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      background-size: 200% 200%;
+      animation: gradientBG 12s ease infinite;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    @keyframes gradientBG {
+      0%   { background-position: 0 50% }
+      50%  { background-position: 100% 50% }
+      100% { background-position: 0 50% }
+    }
+    #tsparticles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+    nav.scrolled {
+      padding: .6rem 3rem;
+      background: rgba(0,0,0,0.6);
+    }
+    .brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    @media (max-width: 720px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(0,0,0,0.92);
+        padding: 1.5rem 3rem;
+        gap: 1.2rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    .wrapper {
+      width: 90%;
+      max-width: 900px;
+      margin: 7rem auto 0 auto;
+      animation: fadeIn .5s both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px) }
+      to   { opacity: 1; transform: translateY(0) }
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(0,170,255,0.5);
+    }
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section-header {
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-min);
+      transition: var(--transition);
+    }
+    .card:hover {
+      box-shadow: var(--shadow-max);
+    }
+    .card h3 {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .card p, .card ul {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .card ul {
+      list-style: disc;
+      margin-left: 1.4rem;
+    }
+    .btn-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .6rem 1.2rem;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-link:hover {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 10px rgba(0,170,255,0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #aaa;
+      font-size: .9rem;
+    }
+
+    /* new styles for spacing between each job */
+    .job {
+      margin-bottom: 2rem;
+    }
+
+    /* optional tweak: remove extra bottom margin on last job */
+    .job:last-child {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -70,6 +228,7 @@
   </nav>
   <div class="wrapper">
     <h1>Resume</h1>
+
     <div class="section">
       <div class="card">
         <h3>Contact</h3>
@@ -78,60 +237,82 @@
         <a href="contact.html" class="btn-link">Contact Me</a>
       </div>
     </div>
+
     <div class="section">
       <div class="card">
         <h3>Summary</h3>
-        <p>Detail-oriented Telecom and Network Specialist with 8+ years of experience in fiber optic inspection, network testing, and quality assurance across telecommunications and IT environments. Skilled in troubleshooting, performance optimization, and ensuring adherence to industry standards and project specifications. Experienced in cross-functional collaboration, field inspections, and using advanced diagnostic tools such as OTDR and network analyzers. Holds a Lean Six Sigma Green Belt and excels at identifying process improvements, enhancing network reliability, and supporting high-quality service delivery. Seeking to leverage hands-on technical expertise and problem-solving skills in a fast-paced, growth-oriented role.
-</p>
+        <p>
+          Detail-oriented Telecom and Network Specialist with 8+ years of experience
+          in fiber optic inspection, network testing, and quality assurance across
+          telecommunications and IT environments. Skilled in troubleshooting,
+          performance optimization, and ensuring adherence to industry standards
+          and project specifications. Experienced in cross-functional collaboration,
+          field inspections, and using advanced diagnostic tools such as OTDR and
+          network analyzers. Holds a Lean Six Sigma Green Belt and excels at
+          identifying process improvements, enhancing network reliability, and
+          supporting high-quality service delivery. Seeking to leverage hands-on
+          technical expertise and problem-solving skills in a fast-paced,
+          growth-oriented role.
+        </p>
       </div>
     </div>
-  <div class="section">
-  <div class="card">
-    <h3>Experience</h3>
 
-    <h4>Network Engineer • BTI Solutions</h4>
-    <p><em>Jun 2024 – Jun 2025</em></p>
-    <ul>
-      <li>Mobile & telecom system validation for max uptime</li>
-      <li>Test case design & execution for network upgrades</li>
-      <li>Dashboard‑driven KPI monitoring & compliance</li>
-      <li>Cross‑team troubleshooting & root cause resolution</li>
-      <li>Designed and implemented automated network test scripts using Powershell</li>
-      <li>Collaborated with security team to enforce data protection policies</li>
-      <li>Authored network architecture and troubleshooting guides to onboard new engineers</li>
-    </ul>
+    <div class="section">
+      <div class="card">
+        <h3>Experience</h3>
 
-    <h4>Fiber Optic Technician • GCOMM TECH / WYYERD FIBER</h4>
-    <p><em>Jun 2022 – Feb 2024</em></p>
-    <ul>
-      <li>Helped build a new ISP from the ground up using lean methodologies</li>
-      <li>Onboarded and trained new contractors to meet quality and performance standards</li>
-      <li>Ensured stakeholder goals were met through structured inspections and reporting</li>
-      <li>Performed OTDR and precision caliper inspections to maintain quality compliance</li>
-      <li>Coordinated fiber plant deployments across multiple sites, managing schedules and resources</li>
-      <li>Developed best practice guides and safety protocols for fiber installations</li>
-      <li>Executed preventative maintenance schedules to reduce service interruptions</li>
-    </ul>
+        <div class="job">
+          <h4>Network Engineer • BTI Solutions</h4>
+          <p><em>Jun 2024 – Jun 2025</em></p>
+          <ul>
+            <li>Mobile & telecom system validation for max uptime</li>
+            <li>Test case design & execution for network upgrades</li>
+            <li>Dashboard‑driven KPI monitoring & compliance</li>
+            <li>Cross‑team troubleshooting & root cause resolution</li>
+            <li>Designed and implemented automated network test scripts using PowerShell</li>
+            <li>Collaborated with security team to enforce data protection policies</li>
+            <li>Authored network architecture and troubleshooting guides to onboard new engineers</li>
+          </ul>
+        </div>
 
-    <h4>Integration Technician • Subcom</h4>
-    <p><em>Feb 2016 – Mar 2020</em></p>
-    <ul>
-      <li>Consistently recognized as the highest production worker on the team</li>
-      <li>Conducted high‑level QA analysis using radiographs to meet strict SOP requirements</li>
-      <li>Led splice inspection and process audits to maintain project delivery targets</li>
-      <li>Managed inventory of fiber materials and maintained accurate tracking records</li>
-      <li>Developed installation checklists that improved first‑pass acceptance rates</li>
-      <li>Participated in lean workshops to streamline integration workflows and reduce waste</li>
-      <li>Trained junior technicians on installation procedures and safety standards</li>
-    </ul>
-  </div>
-</div>
+        <div class="job">
+          <h4>Fiber Optic Technician • GCOMM TECH / WYYERD FIBER</h4>
+          <p><em>Jun 2022 – Feb 2024</em></p>
+          <ul>
+            <li>Helped build a new ISP from the ground up using lean methodologies</li>
+            <li>Onboarded and trained new contractors to meet quality and performance standards</li>
+            <li>Ensured stakeholder goals were met through structured inspections and reporting</li>
+            <li>Performed OTDR and precision caliper inspections to maintain quality compliance</li>
+            <li>Coordinated fiber plant deployments across multiple sites, managing schedules and resources</li>
+            <li>Developed best practice guides and safety protocols for fiber installations</li>
+            <li>Executed preventative maintenance schedules to reduce service interruptions</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h4>Integration Technician • Subcom</h4>
+          <p><em>Feb 2016 – Mar 2020</em></p>
+          <ul>
+            <li>Consistently recognized as the highest production worker on the team</li>
+            <li>Conducted high‑level QA analysis using radiographs to meet strict SOP requirements</li>
+            <li>Led splice inspection and process audits to maintain project delivery targets</li>
+            <li>Managed inventory of fiber materials and maintained accurate tracking records</li>
+            <li>Developed installation checklists that improved first‑pass acceptance rates</li>
+            <li>Participated in lean workshops to streamline integration workflows and reduce waste</li>
+            <li>Trained junior technicians on installation procedures and safety standards</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
     <div class="section">
       <div class="card">
         <h3>Education</h3>
         <p><strong>B.S. Computer Science</strong> • Univ. of the People | Aug 2025</p>
       </div>
     </div>
+
     <div class="section">
       <div class="card">
         <h3>Skills</h3>
@@ -139,34 +320,54 @@
           <li>Lean Six Sigma Green Belt • 5S & Kaizen leader</li>
           <li>Automation & scripting: PowerShell, Python, Bash</li>
           <li>Fiber Optic Inspection: OTDR, X-ray, precision tools</li>
-          <a href="skills.html" class="btn-link">See Skills</a>
         </ul>
+        <a href="skills.html" class="btn-link">See Skills</a>
       </div>
     </div>
+
     <div class="section">
       <div class="card">
         <h3>Passion Projects</h3>
         <ul>
-          <li>Realtime-Data Analyzer App</li>
-          <li>Real-Time Voice Transcriber</li>
+          <li>Realtime‑Data Analyzer App</li>
+          <li>Real‑Time Voice Transcriber</li>
           <li>AR Glasses Control Prototype</li>
           <li>Automated Reporting Suite</li>
-          <li>Iphone Smart Home Integration</li>
+          <li>iPhone Smart Home Integration</li>
           <li>This Very Website</li>
         </ul>
         <a href="projects.html" class="btn-link">View Projects</a>
       </div>
     </div>
+
   </div>
+
   <footer>© 2025 Pruitt Colon | whyhirepruitt.dev</footer>
+
   <script>
-    const nav=document.getElementById('navbar');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
-    document.getElementById('menu-toggle').addEventListener('click',()=>document.getElementById('nav-links').classList.toggle('open'));  
-    tsParticles.load('tsparticles',{
-      fullScreen:{enable:true,zIndex:-1},
-      fpsLimit:60,detectRetina:true,
-      particles:{number:{value:90,density:{enable:true,area:800}},color:{value:'#00aaff'},shape:{type:'circle'},opacity:{value:0.6,random:true,animation:{enable:true,speed:1,minimumValue:0.3}},size:{value:{min:1,max:5},animation:{enable:true,speed:2,minimumValue:1}},links:{enable:true,distance:120,color:'#00aaff',opacity:0.3,width:1},move:{enable:true,speed:1.5,outModes:{default:'bounce'}}
-    }});
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () =>
+      nav.classList.toggle('scrolled', window.scrollY > 60)
+    );
+
+    document.getElementById('menu-toggle').addEventListener('click', () =>
+      document.getElementById('nav-links').classList.toggle('open')
+    );
+
+    tsParticles.load('tsparticles', {
+      fullScreen: { enable: true, zIndex: -1 },
+      fpsLimit: 60,
+      detectRetina: true,
+      particles: {
+        number: { value: 90, density: { enable: true, area: 800 } },
+        color: { value: '#00aaff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.6, random: true, animation: { enable: true, speed: 1, minimumValue: 0.3 } },
+        size: { value: { min: 1, max: 5 }, animation: { enable: true, speed: 2, minimumValue: 1 } },
+        links: { enable: true, distance: 120, color: '#00aaff', opacity: 0.3, width: 1 },
+        move: { enable: true, speed: 1.5, outModes: { default: 'bounce' } }
+      }
+    });
   </script>
 </body>
 </html>
