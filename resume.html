@@ -105,18 +105,16 @@
   gap: 1.5rem;
 }
 
-/* mobile: force one row, allow scroll */
+/* on small screens: one column, stacked */
 @media (max-width: 600px) {
   .summary-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    padding-bottom: 0.5rem; /* give room for the scrollbar */
+    grid-template-columns: 1fr;
   }
   .summary-item {
-    flex: 0 0 240px;  /* each card stays 240px wide */
+    margin-bottom: 2rem;  /* space between each block */
   }
 }
+
 
 
 /* Style each bit’s title */
@@ -281,28 +279,20 @@
   <div class="card summary-card">
     <h3>Summary</h3>
 
-    <div class="summary-grid">
-      <div class="summary-item">
-        <h4>Who I Am</h4>
-        <p>
-          Detail‑oriented telecom and network specialist with over eight years of hands‑on experience in fiber‑optic inspection, network testing and quality assurance across both telecom and IT environments.
-        </p>
-      </div>
-
-      <div class="summary-item">
-        <h4>What I Do</h4>
-        <p>
-          I troubleshoot complex issues, optimize system performance and lead field inspections. I collaborate with cross‑functional teams and use advanced diagnostic tools such as OTDR and network analyzers to ensure every project meets industry standards.
-        </p>
-      </div>
-
-      <div class="summary-item">
-        <h4>What I Bring</h4>
-        <p>
-          As a certified Lean Six Sigma Green Belt, I have a proven record of identifying process improvements that boost network reliability and deliver high‑quality service. I am eager to apply my technical expertise and problem‑solving skills in a fast‑paced, growth‑oriented role.
-        </p>
-      </div>
-    </div>
+  <div class="summary-grid">
+  <div class="summary-item">
+    <h4>Who I Am</h4>
+    <p>Detail‑oriented telecom…</p>
+  </div>
+  <div class="summary-item">
+    <h4>What I Do</h4>
+    <p>I troubleshoot complex…</p>
+  </div>
+  <div class="summary-item">
+    <h4>What I Bring</h4>
+    <p>As a certified Lean Six…</p>
+  </div>
+</div>
   </div>
 </div>
 
