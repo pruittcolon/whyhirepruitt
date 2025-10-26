@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume • Why Hire Pruitt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <style>
+    :root {
+      --bg-1: #0c0e11;
+      --bg-2: #0f1219;
+      --accent: #00aaff;
+      --text: #f0f6ff;
+      --card-bg: rgba(255,255,255,0.07);
+      --card-border: rgba(0,170,255,0.4);
+      --radius: 1rem;
+      --transition: all .3s ease;
+      --shadow-min: 0 0 20px rgba(0,170,255,0.4);
+      --shadow-max: 0 0 40px rgba(0,170,255,0.6);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(130deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      background-size: 200% 200%;
+      animation: gradientBG 12s ease infinite;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    @keyframes gradientBG {
+      0%   { background-position: 0 50% }
+      50%  { background-position: 100% 50% }
+      100% { background-position: 0 50% }
+    }
+    #tsparticles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+    nav.scrolled {
+      padding: .6rem 3rem;
+      background: rgba(0,0,0,0.6);
+    }
+    .brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* on small screens: one column, stacked */
+@media (max-width: 600px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .summary-item {
+    margin-bottom: 2rem;  /* space between each block */
+  }
+}
+
+
+
+/* Style each bit’s title */
+.summary-item h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+/* Body text in each column */
+.summary-item p {
+  color: var(--text);
+  line-height: 1.6;
+}
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .summary-item p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+.card, .summary-card {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+    
+    @media (max-width: 720px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(0,0,0,0.92);
+        padding: 1.5rem 3rem;
+        gap: 1.2rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    .wrapper {
+      width: 90%;
+      max-width: 900px;
+      margin: 7rem auto 0 auto;
+      animation: fadeIn .5s both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px) }
+      to   { opacity: 1; transform: translateY(0) }
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(0,170,255,0.5);
+    }
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section-header {
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-min);
+      transition: var(--transition);
+    }
+    .card:hover {
+      box-shadow: var(--shadow-max);
+    }
+    .card h3 {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .card p, .card ul {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .card ul {
+      list-style: disc;
+      margin-left: 1.4rem;
+    }
+    .btn-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .6rem 1.2rem;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-link:hover {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 10px rgba(0,170,255,0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #aaa;
+      font-size: .9rem;
+    }
+@media (max-width: 600px) {
+  .summary-grid {
+    /* switch off the three-col layout entirely */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* make absolutely sure it fills the card’s width */
+    width: 100%;
+    overflow: visible;
+  }
+  .summary-item {
+    /* let each block expand to full width */
+    flex: 1 1 100%;
+    margin: 0;
+  }
+}
+    /* spacing between each role */
+    .card h4 {
+      margin-top: 1.5rem;
+    }
+    .card ul {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+  <nav id="navbar">
+    <div class="brand">Pruitt Colon</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+    <h1>Resume</h1>
+
+    <div class="section">
+      <div class="card">
+        <h3>Contact</h3>
+        <p>Pruitt Colon | Pruittcolon@gmail.com | (207) 337-0340</p>
+        <p>Casa Grande, AZ</p>
+        <a href="contact.html" class="btn-link">Contact Me</a>
+      </div>
+    </div>
+
+   <div class="section">
+  <div class="card summary-card">
+    <h3>Summary</h3>
+
+  <div class="summary-grid">
+  <div class="summary-item">
+    <h4>Who I Am</h4>
+    <p>AI Engineer with a Master's in Software Engineering (AI Specialization) from WGU and 8+ years of systems engineering experience. I build scalable AI systems that integrate voice intelligence, IoT orchestration, and enterprise architecture.</p>
+  </div>
+  <div class="summary-item">
+    <h4>What I Do</h4>
+    <p>I architect scalable AI platforms using PyTorch, FastAPI, and Docker. My flagship project, NeMo AI Ecosystem (12K+ lines Python), integrates AR glasses, smart home devices, and enterprise AI (NeMo ASR, Gemma LLM, RAG) into a unified voice-controlled system.</p>
+  </div>
+  <div class="summary-item">
+    <h4>What I Bring</h4>
+    <p>I combine AI/ML engineering with DevOps expertise, security-first design, and product development skills. My telecom background provides lean systems thinking and precision engineering that translates into robust, scalable software.</p>
+  </div>
+</div>
+  </div>
+</div>
+
+    <div class="section">
+      <div class="card" style="background: linear-gradient(135deg, rgba(0,170,255,0.12), rgba(0,170,255,0.05)); border: 2px solid rgba(0,170,255,0.5);">
+        <h3>Flagship Project: NeMo AI Ecosystem</h3>
+        <p><strong>Complete Voice-Controlled Life Automation System</strong> | <a href="https://github.com/pruittcolon/NeMo_Server" target="_blank" style="color: var(--accent);">GitHub Repository</a> | <a href="nemo-server.html" style="color: var(--accent);">Full Showcase</a></p>
+        <ul>
+          <li><strong>12,000+ lines of production Python code</strong> integrating enterprise AI, AR wearables, IoT hub, and smart home devices</li>
+          <li><strong>AI/ML Stack:</strong> NVIDIA NeMo (Parakeet ASR, TitaNet speaker ID), Gemma 3 4B LLM (GGUF quantization), DistilRoBERTa emotion analysis, FAISS + RAG for contextual memory</li>
+          <li><strong>Backend Architecture:</strong> FastAPI with 30+ REST/WebSocket endpoints, async I/O, role-based auth (RBAC), AES-256 encryption, JWT sessions</li>
+          <li><strong>Multi-Platform Integration:</strong> Flutter Android app, Even Reality AR glasses SDK, VoiceMonkey/Alexa smart home control, Deepgram & OpenAI APIs</li>
+          <li><strong>DevOps:</strong> Docker multi-stage builds, CUDA 12.1 GPU optimization (exclusive Gemma access), health checks, automated testing</li>
+          <li><strong>Key Innovation:</strong> 100% speaker-based data isolation with voice enrollment system, deterministic GPU allocation, sub-second voice-to-action latency</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h3>Experience</h3>
+
+        <h4>Network Engineer • BTI Solutions</h4>
+        <p><em>Jun 2024 – Jun 2025</em></p>
+        <ul>
+          <li>Test case design & execution for network upgrades</li>
+          <li>Dashboard‑driven KPI monitoring & compliance</li>
+          <li>Cross‑team troubleshooting & root cause resolution</li>
+          <li>Designed and implemented automated network test scripts using PowerShell</li>
+          <li>Authored network architecture and troubleshooting guides to onboard new engineers</li>
+        </ul>
+
+        <h4>Fiber Optic Technician • GCOMM TECH / WYYERD FIBER</h4>
+        <p><em>Jun 2022 – Feb 2024</em></p>
+        <ul>
+          <li>Helped build a new ISP from the ground up using lean methodologies</li>
+          <li>Onboarded and trained new contractors to meet quality and performance standards</li>
+          <li>Ensured stakeholder goals were met through structured inspections and reporting</li>
+          <li>Performed OTDR and precision caliper inspections to maintain quality compliance</li>
+          <li>Coordinated fiber plant deployments across multiple sites, managing schedules and resources</li>
+        </ul>
+
+        <h4>Integration Technician • Subcom</h4>
+        <p><em>Feb 2016 – Mar 2020</em></p>
+        <ul>
+          <li>Consistently recognized as the highest production worker on the team</li>
+          <li>Conducted high‑level QA analysis using radiographs to meet strict SOP requirements</li>
+          <li>Managed inventory of fiber materials and maintained accurate tracking records</li>
+          <li>Developed installation checklists that improved first‑pass acceptance rates</li>
+          <li>Participated in lean workshops to streamline integration workflows and reduce waste</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h3>Education</h3>
+        <p><strong>M.S. Software Engineering (AI Specialization)</strong> • Western Governors University</p>
+        <p><strong>B.S. Computer Science</strong> • University of the People</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li><strong>AI/ML Frameworks:</strong> PyTorch 2.3, NVIDIA NeMo 2.5, Hugging Face Transformers, FAISS (vector search), llama-cpp-python, sentence-transformers, scikit-learn</li>
+          <li><strong>AI Models:</strong> Parakeet-TDT ASR, TitaNet Speaker Diarization, Gemma 3 4B (GGUF quantization), DistilRoBERTa (emotion), MiniLM-L6-v2 (embeddings)</li>
+          <li><strong>Backend Development:</strong> FastAPI, Python 3.10+, async/await, SQLite, PostgreSQL, Redis, WebSocket, REST APIs, Uvicorn, Pydantic</li>
+          <li><strong>DevOps & Infrastructure:</strong> Docker (multi-stage builds), CUDA 12.1, GPU optimization, Linux (Ubuntu/Debian), Bash scripting, systemd, Nginx, CI/CD (GitHub Actions)</li>
+          <li><strong>Security:</strong> RBAC, JWT authentication, bcrypt password hashing, AES-256 encryption, OWASP best practices, audit logging, IP whitelisting, rate limiting</li>
+          <li><strong>Frontend & Mobile:</strong> Flutter (Android), HTML5, CSS3, JavaScript (ES6+), Next.js, React, Mermaid.js, tsParticles, responsive design</li>
+          <li><strong>IoT & Hardware:</strong> Even Reality AR glasses SDK, VoiceMonkey (Alexa), IoT Hub orchestration, serial communication, JNI bindings</li>
+          <li><strong>Cloud & APIs:</strong> Deepgram API, OpenAI GPT API, HTTP clients (requests, aiohttp), API integration and testing</li>
+          <li><strong>Databases:</strong> SQLite (encrypted), PostgreSQL, FAISS vector DB, database migrations, ORM patterns</li>
+          <li><strong>Version Control:</strong> Git, GitHub, Git workflows, SSH keys, repository management</li>
+          <li><strong>Testing:</strong> pytest, pytest-asyncio, unit testing, integration testing, API testing</li>
+          <li><strong>Legacy Skills:</strong> Lean Six Sigma methodologies, 5G/LTE network analysis, OTDR fiber inspection, PowerShell scripting</li>
+        </ul>
+        <a href="skills.html" class="btn-link">See Full Skills Breakdown</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h3>Additional Projects</h3>
+        <ul>
+          <li><strong>Real-Time Audio Intelligence Suite:</strong> Desktop app with live audio capture, metadata storage, and automated analysis. Includes context-aware chat prediction based on recent conversations.</li>
+          <li><strong>Network KPI Analyzer:</strong> Python ETL pipeline using Pandas to parse drive-test logs, calculate network KPIs, and output PowerBI-ready datasets.</li>
+          <li><strong>Secure ChatGPT Frontend:</strong> Vanilla JavaScript UI with Node.js proxy backend. Protects API keys, streams responses, and renders markdown to HTML.</li>
+          <li><strong>Portfolio Website:</strong> This responsive site built with vanilla HTML/CSS/JS, featuring tsParticles animations and Mermaid architecture diagrams.</li>
+        </ul>
+        <a href="projects.html" class="btn-link">View All Projects</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h3>Certifications</h3>
+        <ul>
+          <li>Lean Six Sigma Green Belt</li>
+          <li>Fiber Optic Inspection & Termination</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>© 2025 Pruitt Colon | whyhirepruitt.dev</footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () =>
+      nav.classList.toggle('scrolled', window.scrollY > 60)
+    );
+
+    document.getElementById('menu-toggle').addEventListener('click', () =>
+      document.getElementById('nav-links').classList.toggle('open')
+    );
+
+    tsParticles.load('tsparticles', {
+      fullScreen: { enable: true, zIndex: -1 },
+      fpsLimit: 60,
+      detectRetina: true,
+      particles: {
+        number: { value: 90, density: { enable: true, area: 800 } },
+        color: { value: '#00aaff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.6, random: true, animation: { enable: true, speed: 1, minimumValue: 0.3 } },
+        size: { value: { min: 1, max: 5 }, animation: { enable: true, speed: 2, minimumValue: 1 } },
+        links: { enable: true, distance: 120, color: '#00aaff', opacity: 0.3, width: 1 },
+        move: { enable: true, speed: 1.5, outModes: { default: 'bounce' } }
+      }
+    });
+  </script>
+</body>
+</html>
