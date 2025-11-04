@@ -333,10 +333,10 @@
         <ul>
           <li><strong>12,000+ lines of production Python code</strong> integrating enterprise AI, AR wearables, IoT hub, and smart home devices</li>
           <li><strong>AI/ML Stack:</strong> NVIDIA NeMo (Parakeet ASR, TitaNet speaker ID), Gemma 3 4B LLM (GGUF quantization), DistilRoBERTa emotion analysis, FAISS + RAG for contextual memory</li>
-          <li><strong>Backend Architecture:</strong> FastAPI with 30+ REST/WebSocket endpoints, async I/O, role-based auth (RBAC), AES-256 encryption, JWT sessions</li>
+          <li><strong>Microservices Architecture:</strong> 6 independent services (API Gateway, Transcription, Gemma AI, RAG, Emotion, GPU Coordinator) with FastAPI, 30+ endpoints, service-to-service JWT auth, RBAC, AES-256 encryption</li>
           <li><strong>Multi-Platform Integration:</strong> Flutter Android app, Even Reality AR glasses SDK, VoiceMonkey/Alexa smart home control, Deepgram & OpenAI APIs</li>
-          <li><strong>DevOps:</strong> Docker multi-stage builds, CUDA 12.1 GPU optimization (exclusive Gemma access), health checks, automated testing</li>
-          <li><strong>Key Innovation:</strong> 100% speaker-based data isolation with voice enrollment system, deterministic GPU allocation, sub-second voice-to-action latency</li>
+          <li><strong>DevOps:</strong> Docker Compose orchestration, CUDA 12.1 GPU optimization, intelligent GPU sharing via Redis Pub/Sub pause/resume protocol, PostgreSQL task queue, health checks, automated testing</li>
+          <li><strong>Key Innovation:</strong> 100% speaker-based data isolation with voice enrollment system, single-GPU coordination enabling simultaneous ASR + LLM, sub-second voice-to-action latency</li>
         </ul>
       </div>
     </div>
